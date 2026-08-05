@@ -51,36 +51,37 @@ const mapLinks={
 };
 const maps=q=>mapLinks[q]||`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(q)}`;
 const imageSources={
-  '琉森火車站':'',
-  '卡貝爾橋 Kapellbrücke':'',
-  '天鵝廣場 Schwanenplatz':'',
-  '卡貝爾廣場 Kapellplatz':'',
-  '舊城廣場群':'',
-  '穆塞格城牆 Museggmauer':'',
-  'Hertensteinstrasse 購物街':'',
+  '琉森火車站':'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/07/d8/6a/18/lucerne-station.jpg?w=2000&h=-1&s=1',
+  '返回琉森火車站':'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/07/d8/6a/18/lucerne-station.jpg?w=2000&h=-1&s=1',
+  '卡貝爾橋 Kapellbrücke':'https://lh3.googleusercontent.com/gps-cs-s/AHRPTWkXTNjLpv0uZgnb6hlwQGyBZSb19hK54KjgTgYXtUewXI0WMOH_U4N2iJWSvdR5Dwf2lG-UZk3IIvWO7YKV0uDXuXU_0hRmA7lO-VV5TT8acolCNmchTS017jWYbvZR0zobhQvF=s1360-w1360-h1020-rw',
+  '天鵝廣場 Schwanenplatz':'https://thumbs.dreamstime.com/z/schwanenplatz-busy-schwanenplatz-crossroad-traffic-st-leodegar-church-background-405597934.jpg?ct=jpeg',
+  '卡貝爾廣場 Kapellplatz':'https://www.lucernefestival.ch/media/thumbnails/filer_public/2d/a6/2da63048-7c1a-46e9-a189-d469fe88093e/kapellplatz.jpeg__926x566_crop_subsampling-2_upscale.jpeg',
+  '舊城廣場群':'https://thumbs.dreamstime.com/z/city-hall-square-lucerne-luzern-switzerland-%C3%A2-september-busy-day-rathaus-central-german-speaking-portion-126753100.jpg?ct=jpeg',
+  '穆塞格城牆 Museggmauer':'https://lh3.googleusercontent.com/gps-cs-s/AHRPTWlgsCzvrjb7uKaQZM9jV5X3SzGWOIMMVT16IFqpW--7uUFqM7iYU2V0R8iiDtCPoQpRVxcGkDifa64NrsaXUnWwJjWWezKI_ewH-BrHrxl5pzFTQjmctQDuQPR1J--LaXjbzkkyQA=s1360-w1360-h1020-rw',
+  'Hertensteinstrasse 購物街':'https://image.zentralplus.ch/unsafe/1200x675/filters:quality(75):focal(800x600:801x601)/www.zentralplus.ch/wp-content/uploads/2020/06/20200603_123344-1.jpg',
   '垂死獅子像':'https://images.pexels.com/photos/33711968/pexels-photo-33711968.jpeg',
   '冰河公園 Gletschergarten':'https://www.nachhaltigleben.ch/images/gallery/275/medium/Gletschergaerten_Schweiz_Gletschertopf_700.jpg',
   '布爾巴基全景館':'https://images.unsplash.com/photo-1502784444187-359ac186c5bb?auto=format&fit=crop&w=1200&q=80',
-  '聖萊奧德伽爾教堂':'',
-  'Schweizerhofquai 湖畔大道':'',
-  '碼頭搭船／改搭公車':'',
-  '前往 Meggenhorn 城堡':'',
-  '城堡、葡萄園與牧場':'',
-  '半島外緣耶穌雕像':'',
-  '搭船或公車返回':'',
+  '聖萊奧德伽爾教堂':'https://lh3.googleusercontent.com/gps-cs-s/AHRPTWmvgfOjGW182xF_LwRo38o0JJkUhzxnT_IcyDh5rbtlGggWtDAev4FtPxzy1j2r7MlM7nffePGP_oAdziTl9_L0eEAeWaGExZ0J3GCzaE6HXJw-OrpGQeiDxbtCvX0P6H-h-rBN=s1360-w1360-h1020-rw',
+  'Schweizerhofquai 湖畔大道':'https://lh3.googleusercontent.com/gps-cs-s/AHRPTWkm4tv9J21ZLNmBkIgvwLkgDW77enkdqz9nZd-VP6eVJykhisI7bK_UZs1NEczrhNsN7QSBMo2jBnRkXAwOMCJiDGkvAd2Ts2zJgxp0WmXr7uQHuwrETrfDjM9l4tZIdm1lXkjgaW5YapM=s1360-w1360-h1020-rw',
+  '碼頭搭船／改搭公車':'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRieHMmLy-NPnLIt-77atwwg9Go8XeZCTOiMbl-SYRrtT1HDqoxdyPZJcw&s=10',
+  '前往 Meggenhorn 城堡':'https://lh3.googleusercontent.com/gps-cs-s/AHRPTWl0Ig108Tv-ex1k2sqbRRGlwBbwm6kfJrYJrFD7xIGJMdtKKuNWf4G6oV67I4X_WCmtedsRaJqdsuqVYp0V8lMFSl0KeQIBRDv7aohxYzoDLKGaZXMt4oqiySw_Qtvf77ziwPoPbYGn6UHi=s1360-w1360-h1020-rw',
+  '城堡、葡萄園與牧場':'https://lh3.googleusercontent.com/gps-cs-s/AHRPTWmjXUnMB3oTvto1JRU7PnNnqyOfn0k5A7Q3z3FAmzhkMs1ityL_tAct4Rkwnz2WrxD2XyqDrFUaSH5cGQLs5BOWI4zyRbdTuaQs3UM2zRzqgrvdNSUxLfTDuVl_kT70NX55ugQ_=s1360-w1360-h1020-rw',
+  '半島外緣耶穌雕像':'https://lh3.googleusercontent.com/gps-cs-s/AHRPTWneW_Gnq39zvszLALXYGhDPHvFp39l5nTzucu36PEfJu--VecKFG7baebzMcMP9GXXHvvpZrWlEnscjU5rcpVks9QdvZeUZqXU_b4vdVvLI-egguF9XrAn_DOwwp2OU_uCzNKssRiwKmvc=s1360-w1360-h1020-rw',
+  '搭船或公車返回':'https://scontent-tpe1-1.xx.fbcdn.net/v/t39.30808-6/644337603_34080856131560926_7234461649265962850_n.jpg?stp=cp6_dst-jpg_tt6&cstp=mx1284x682&ctp=s1284x682&_nc_cat=100&ccb=1-7&_nc_sid=aa7b47&_nc_ohc=Dn0o1IS_qDEQ7kNvwHDEi-d&_nc_oc=AdpM3zaLBl2TD8Uaa4OjvJDdhYqaahNcMaij5brPDLpmKnFbNrA7X1e29DzgYoo-xyc&_nc_zt=23&_nc_ht=scontent-tpe1-1.xx&_nc_gid=AXudvaAF9lvsFd2nMUObpQ&_nc_ss=7b2a8&oh=00_AQGEeWtCxKHx_W76aLfbvkXEVj94Y2Eh2MbFX5-upYVPLg&oe=6A792663',
   '城堡花園與湖景':'https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=85',
   '葡萄園與牧場':'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=85',
   '半島湖岸與山景':'https://images.unsplash.com/photo-1502784444187-359ac186c5bb?auto=format&fit=crop&w=1200&q=85',
   '湖上前往城堡':'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=85',
   '羅伊斯河畔・卡貝爾橋':'https://images.pexels.com/photos/38331128/pexels-photo-38331128.jpeg',
-  'Schweizerhofquai':'',
-  '斯普洛耶橋 Spreuerbrücke':'',
+  'Schweizerhofquai':'https://i.travelapi.com/lodging/1000000/20000/18300/18270/2671709f_z.jpg?impolicy=resizecrop&rw=1920&ra=fit',
+  '斯普洛耶橋 Spreuerbrücke':'https://media.istockphoto.com/id/1074885376/photo/lucerne-reuss-river-waterfront-evening-sepia-color-view-central-switzerland.jpg?s=1024x1024&w=is&k=20&c=2Kky89NUJ1vWqoxp2HLmC6oEtU2hmR1cHlUIGxID58I=',
   'KKL 琉森文化和會議中心':'https://lh3.googleusercontent.com/gps-cs-s/AHRPTWlI74XJrCKrAGjMGAsIeRj5-GAO_dGB56l2jEqyUGvTZj77C17zVjmH3V3qWCHXHY9L55dEGTa6YbOV520B0542PeaKEyXgWzsJ0Tkg4Tj4byxlPjTbUVhNJr9LeMiyro276jC-=s1360-w1360-h1020-rw',
   '耶穌會教堂':'https://lh3.googleusercontent.com/gps-cs-s/AHRPTWkO1sF1ZUw60bOfAIl37PBWhrgW310BYakv0xaIKzFKJz9ZtwmTs0af8qFzzPX7R0DQjYyaN_4MudvtaX9Atr5BuCC4je2aRKvVHgR9U_4NnplAvkXWSrOp4te7Y2M0a1EM0XrPgD0sjp-K=s1360-w1360-h1020-rw',
   'Sammlung Rosengart 美術館':'https://lh3.googleusercontent.com/gps-cs-s/AHRPTWku5lvvRS7dch8HuVMtymjQZtJfRBhXkBZDPEeIxODebLKp-RCRbhH2poJ5biq7-ngqMlLB19vSjC9VoyloaF-R3kuzIAakSxADY5QNevEy0bVpuENLHycZaQRuTft1rsFmaBwviU6bqVs5=s1360-w1360-h1020-rw',
-  '瑞士交通博物館':'',
-  'Weggis':'',
-  '瑞吉峰 Rigi':'',
+  '瑞士交通博物館':'https://lh3.googleusercontent.com/gps-cs-s/AHRPTWmIhtdtfbLgke_gtIIbLGvQk0PqSVY5CZjlp9Gvsk_kZFJkrmBn1c_ccac9Itz61pfUpx6OdzFPGSL-NXpaVKHgr8Rb8UyDyT4NKvrM-XnCXMyd_gixcyCKZqp8-9wV8o7eUx0T=s1360-w1360-h1020-rw',
+  'Weggis':'https://lh3.googleusercontent.com/gps-cs-s/AHRPTWki4KS57KiGUFQao1dLkv2LTUNe_hpFwNrKJ0zmXgOSbtKq5OM372G7qBgQzRx51O3ibaZu2v8Nbd4Xf3ivoAvghHdkhPMOHwvCA74p_HmTeJkEZofQwlR_CypoNGnqG_HO57_7=s1360-w1360-h1020-rw',
+  '瑞吉峰 Rigi':'https://travelwithmiya.com/wp-content/uploads/2021/10/Mt.Rigi-36.jpg',
   '湖光與舊城':'https://images.unsplash.com/photo-1725345650883-e27b84b863d6?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
 };
 const travelData={tabs:[
@@ -95,7 +96,7 @@ function header(t){return `<section class="intro"><div><div class="kicker">Luzer
 function photoHTML(name,index){const slot=imageSources[name]||`https://placehold.co/720x420/e7eef2/5d6c7d?text=Lucerne+${index}`;return `<div class="photo"><img loading="lazy" src="${slot}" data-image-slot="${name}" alt="${name} 圖片預留位置"><span>${name}</span></div>`}
 function renderPlans(){const el=document.querySelector('#planContainer');el.innerHTML=travelData.tabs.map(t=>{let body='';if(t.id==='city') body=`<div class="route">${t.stops.map(stopHTML).join('')}</div><div class="photo-grid"><div class="photo"><img loading="lazy" src="${imageSources['湖光與舊城']}" alt="琉森湖與城市風景"><span>湖光與舊城</span></div></div>`;
 if(t.id==='castle') body=`<div class="notice"><strong>交通策略：</strong>先看船班；等待過久就改搭公車。船班具季節性，務必以旅行當日 SBB／SGV 為準。</div><div class="route">${[
-['琉森火車站','若時間充裕，先看車站旁的 KKL 建築。','Luzern Bahnhof'],['KKL 琉森文化和會議中心','車站旁彈性停留；也可留到隔天早上。','KKL Luzern','彈性'],['碼頭搭船／改搭公車','船行最有景觀感；公車通常更容易掌握時間。','Luzern Bahnhofquai'],['前往 Meggenhorn 城堡','碼頭步道約十多分鐘且爬升約 40–50 公尺；公車站方向多為下坡步行。','Schloss Meggenhorn'],['城堡、葡萄園與牧場','前方葡萄園、後方草地，兼具湖景與田園感。','Schloss Meggenhorn'],['半島外緣耶穌雕像','沿園區步道前往湖畔外緣；依現場指標行走。','Christusstatue Meggenhorn'],['搭船或公車返回','依當下班次選擇，避免為等船壓縮後續行程。','Meggenhorn Schiffstation'],['琉森火車站','回市區後銜接晚餐或夜間漫步。','Luzern Bahnhof']].map(stopHTML).join('')}</div><section class="section-card" style="margin-top:16px"><h3>⛴️ 船班時間參考</h3><table class="timetable"><thead><tr><th>方向</th><th>班次</th></tr></thead><tbody><tr><td>琉森 → Meggenhorn</td><td class="time">13:20 · 14:50 · 16:20</td></tr><tr><td>Meggenhorn → 琉森</td><td class="time">13:58 · 15:28 · 16:58</td></tr></tbody></table><p style="color:var(--muted);font-size:.82rem;margin-bottom:0">以上為行程資料提供之參考時間，可能因日期、季節或航務調整。</p><div class="links" style="margin-top:12px"><a class="linkbtn" target="_blank" href="https://www.sbb.ch/en">查 SBB</a><a class="linkbtn alt" target="_blank" href="https://www.lakelucerne.ch/en/">查 SGV 船班</a><a class="linkbtn alt" target="_blank" href="https://www.meggenhorn.ch/">城堡官網</a></div></section>`;
+['琉森火車站','若時間充裕，先看車站旁的 KKL 建築。','Luzern Bahnhof'],['KKL 琉森文化和會議中心','車站旁彈性停留；也可留到隔天早上。','KKL Luzern','彈性'],['碼頭搭船／改搭公車','船行最有景觀感；公車通常更容易掌握時間。','Luzern Bahnhofquai'],['前往 Meggenhorn 城堡','碼頭步道約十多分鐘且爬升約 40–50 公尺；公車站方向多為下坡步行。','Schloss Meggenhorn'],['城堡、葡萄園與牧場','前方葡萄園、後方乳牛與草地，兼具湖景與田園感。','Schloss Meggenhorn'],['半島外緣耶穌雕像','沿園區步道前往湖畔外緣；依現場指標行走。','Christusstatue Meggenhorn'],['搭船或公車返回','依當下班次選擇，避免為等船壓縮後續行程。','Meggenhorn Schiffstation'],['琉森火車站','回市區後銜接晚餐或夜間漫步。','Luzern Bahnhof']].map(stopHTML).join('')}</div><section class="section-card" style="margin-top:16px"><h3>⛴️ 船班時間參考</h3><table class="timetable"><thead><tr><th>方向</th><th>班次</th></tr></thead><tbody><tr><td>琉森 → Meggenhorn</td><td class="time">13:20 · 14:50 · 16:20</td></tr><tr><td>Meggenhorn → 琉森</td><td class="time">13:58 · 15:28 · 16:58</td></tr></tbody></table><p style="color:var(--muted);font-size:.82rem;margin-bottom:0">以上為行程資料提供之參考時間，可能因日期、季節或航務調整。</p><div class="links" style="margin-top:12px"><a class="linkbtn" target="_blank" href="https://www.sbb.ch/en">查 SBB</a><a class="linkbtn alt" target="_blank" href="https://www.lakelucerne.ch/en/">查 SGV 船班</a><a class="linkbtn alt" target="_blank" href="https://www.meggenhorn.ch/">城堡官網</a></div></section>`;
 if(t.id==='castle') body+=`<div class="grid castle-highlights" style="margin-top:16px"><section class="section-card">${photoHTML('城堡花園與湖景','castle-1')}<h3>🏰 城堡花園</h3><p>Meggenhorn 的亮點不只在城堡建築，也在花園、草地與湖景交疊的開闊感。</p></section><section class="section-card">${photoHTML('葡萄園與牧場','castle-2')}<h3>🍇 葡萄園與牧場</h3><p>沿著半島散步，會遇到葡萄園、牧草地與鄉間景色，節奏比市區更悠閒。</p></section><section class="section-card">${photoHTML('半島湖岸與山景','castle-3')}<h3>🌊 半島湖岸</h3><p>走到外緣看湖面與山脈，這段最適合放慢腳步，也很適合拍遠景。</p></section><section class="section-card">${photoHTML('湖上前往城堡','castle-4')}<h3>⛴️ 湖上交通</h3><p>搭船抵達是最有旅行感的方式，沿途可以把琉森湖、岸線與山景一次收入眼底。</p></section></div>`;
 if(t.id==='night') body=`<div class="grid"><section class="section-card">${photoHTML('羅伊斯河畔・卡貝爾橋','night-1')}<h3>🌉 羅伊斯河畔・卡貝爾橋</h3><p>夜色中的木橋與河岸倒影，是最適合慢走與拍照的一段。</p><a class="map" target="_blank" href="${maps('Kapellbrücke Luzern')}">開啟地圖 ↗</a></section><section class="section-card">${photoHTML('Schweizerhofquai','night-2')}<h3>✨ Schweizerhofquai</h3><p>沿湖可看東方文華、Hotel Schweizerhof 等經典飯店立面與燈光。</p><a class="map" target="_blank" href="${maps('Schweizerhofquai Luzern')}">開啟地圖 ↗</a></section><section class="section-card">${photoHTML('斯普洛耶橋 Spreuerbrücke','night-3')}<h3>🌉 斯普洛耶橋 Spreuerbrücke</h3><p>往西漫步到第二座代表性木橋，再從河岸方向遠眺古奇城堡飯店。</p><a class="map" target="_blank" href="${maps('Spreuerbrücke Luzern')}">開啟地圖 ↗</a></section><section class="section-card"><h3>夜間提醒</h3><ul class="bullets"><li>穿防滑、好走的鞋。</li><li>注意末班交通與取行李時間。</li><li>湖邊夜晚可能較涼，帶薄外套。</li></ul></section></div>`;
 if(t.id==='morning') body=`<div class="notice"><strong>倒推法：</strong>列車發車時間 − 取行李 − 步行到月台 − 15 分鐘緩衝，才是最晚離開景點的時間。</div><div class="grid"><section class="section-card">${photoHTML('KKL 琉森文化和會議中心','morning-1')}<h3>KKL 琉森文化和會議中心</h3><p>就在車站旁，最容易控制時間；若前一天未到訪，優先度最高。</p><a class="map" target="_blank" href="${maps('KKL Luzern')}">地圖 ↗</a></section><section class="section-card">${photoHTML('耶穌會教堂','morning-2')}<h3>耶穌會教堂</h3><p>位於羅伊斯河畔，可與卡貝爾橋、車站形成短迴圈。</p><a class="map" target="_blank" href="${maps('Jesuit Church Lucerne')}">地圖 ↗</a></section><section class="section-card">${photoHTML('Sammlung Rosengart 美術館','morning-3')}<h3>Sammlung Rosengart 美術館</h3><p>鄰近車站，館藏包含多件畢卡索作品；入館前先確認當日開館時間。</p><a class="map" target="_blank" href="${maps('Sammlung Rosengart Luzern')}">地圖 ↗</a></section><section class="section-card"><h3>出發前 Checklist</h3><div class="checklist">${['確認列車月台與時間','預留取行李時間','景點離開前回看步行時間','補水、上洗手間'].map((x,i)=>`<label class="check"><input type="checkbox" data-key="m${i}"><span>${x}</span></label>`).join('')}</div></section></div>`;
