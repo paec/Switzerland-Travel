@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>瑞士旅遊景點導覽</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            text-align: center;
+            background: white;
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            max-width: 400px;
+            width: 90%;
+        }
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+            font-size: 1.8rem;
+        }
+        p {
+            color: #7f8c8d;
+            margin-bottom: 2rem;
+        }
+        .menu-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .menu-item {
+            margin-bottom: 1rem;
+        }
+        .btn {
+            display: block;
+            padding: 12px 20px;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(52, 152, 219, 0.3);
+        }
+        .btn:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(52, 152, 219, 0.4);
+        }
+        .btn-interlaken {
+            background-color: #2ecc71;
+            box-shadow: 0 2px 5px rgba(46, 204, 113, 0.3);
+        }
+        .btn-interlaken:hover {
+            background-color: #27ae60;
+            box-shadow: 0 4px 10px rgba(46, 204, 113, 0.4);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>瑞士景點導覽</h1>
+        <p>請選擇您想瀏覽的景點頁面：</p>
+        
+        <ul class="menu-list">
+            <li class="menu-item">
+                <a href="Luzern.html" class="btn">🇨🇭 Luzern (琉森)</a>
+            </li>
+            <li class="menu-item">
+                <a href="InterlakenSee.html" class="btn btn-interlaken">🇨🇭 Interlaken See (因特拉肯湖)</a>
+            </li>
+        </ul>
+    </div>
+
+</body>
+</html>
