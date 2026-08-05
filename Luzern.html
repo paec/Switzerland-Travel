@@ -33,6 +33,7 @@ const mapLinks={
   'Museggmauer Luzern':'https://www.google.com/maps/search/?api=1&query=Museggmauer%20Luzern',
   'Hertensteinstrasse Luzern':'https://www.google.com/maps/search/?api=1&query=Hertensteinstrasse%20Luzern',
   'Lion Monument Luzern':'https://www.google.com/maps/search/?api=1&query=Lion%20Monument%20Luzern',
+  'Gletschergarten Luzern':'https://www.google.com/maps/search/?api=1&query=Gletschergarten%20Luzern',
   'Bourbaki Panorama Luzern':'https://www.google.com/maps/search/?api=1&query=Bourbaki%20Panorama%20Luzern',
   'Hofkirche St. Leodegar':'https://www.google.com/maps/search/?api=1&query=Hofkirche%20St.%20Leodegar',
   'Schweizerhofquai Luzern':'https://www.google.com/maps/search/?api=1&query=Schweizerhofquai%20Luzern',
@@ -57,7 +58,8 @@ const imageSources={
   '舊城廣場群':'',
   '穆塞格城牆 Museggmauer':'',
   'Hertensteinstrasse 購物街':'',
-  '垂死獅子像・冰河公園':'',
+  '垂死獅子像':'',
+  '冰河公園 Gletschergarten':'',
   '布爾巴基全景館':'https://images.unsplash.com/photo-1502784444187-359ac186c5bb?auto=format&fit=crop&w=1200&q=80',
   '聖萊奧德伽爾教堂':'',
   'Schweizerhofquai 湖畔大道':'',
@@ -83,7 +85,7 @@ const imageSources={
 };
 const travelData={tabs:[
 {id:'city',label:'城市經典',icon:'🚶',title:'第一段｜舊城經典步行',subtitle:'從火車站出發，以順路動線串起木橋、廣場、城牆與湖畔。',metric:'約5-7小時',stops:[
-['琉森火車站','出站後先往羅伊斯河與卡貝爾橋方向。','Luzern Bahnhof'],['卡貝爾橋 Kapellbrücke','琉森地標；可從兩岸取不同角度。','Kapellbrücke Luzern'],['天鵝廣場 Schwanenplatz','湖畔與舊城入口的重要節點。','Schwanenplatz Luzern'],['卡貝爾廣場 Kapellplatz','進入舊城廣場群前的短停點。','Kapellplatz Luzern'],['舊城廣場群','穀物廣場 → 鹿兒廣場 → 葡萄酒廣場 → 磨坊廣場。','Kornmarkt Luzern','磨坊廣場彈性'],['穆塞格城牆 Museggmauer','登高看舊城、湖泊與城市屋頂；留意開放狀況。','Museggmauer Luzern'],['Hertensteinstrasse 購物街','由城牆區往獅子紀念碑方向銜接。','Hertensteinstrasse Luzern'],['垂死獅子像・冰河公園','相鄰景點，可依停留時間選擇深度。','Lion Monument Luzern'],['布爾巴基全景館','鄰近獅子像，適合作為雨備或彈性加點。','Bourbaki Panorama Luzern','彈性'],['聖萊奧德伽爾教堂','雙塔地標，之後可順接湖畔大道。','Hofkirche St. Leodegar','彈性'],['Schweizerhofquai 湖畔大道','湖景、飯店街景與山景兼具。','Schweizerhofquai Luzern'],['返回琉森火車站','沿湖或穿越舊城回到車站。','Luzern Bahnhof'] ]},
+['琉森火車站','出站後先往羅伊斯河與卡貝爾橋方向。','Luzern Bahnhof'],['卡貝爾橋 Kapellbrücke','琉森地標；可從兩岸取不同角度。','Kapellbrücke Luzern'],['天鵝廣場 Schwanenplatz','湖畔與舊城入口的重要節點。','Schwanenplatz Luzern'],['卡貝爾廣場 Kapellplatz','進入舊城廣場群前的短停點。','Kapellplatz Luzern'],['舊城廣場群','穀物廣場 → 鹿兒廣場 → 葡萄酒廣場 → 磨坊廣場。','Kornmarkt Luzern','磨坊廣場彈性'],['穆塞格城牆 Museggmauer','登高看舊城、湖泊與城市屋頂；留意開放狀況。','Museggmauer Luzern'],['Hertensteinstrasse 購物街','由城牆區往獅子紀念碑方向銜接。','Hertensteinstrasse Luzern'],['垂死獅子像','雕刻在岩壁上的琉森經典地標，適合先停留拍照與了解歷史。','Lion Monument Luzern'],['冰河公園 Gletschergarten','就在獅子像旁，可沿冰蝕壺與岩層步道深入參觀。','Gletschergarten Luzern'],['布爾巴基全景館','鄰近獅子像，適合作為雨備或彈性加點。','Bourbaki Panorama Luzern','彈性'],['聖萊奧德伽爾教堂','雙塔地標，之後可順接湖畔大道。','Hofkirche St. Leodegar','彈性'],['Schweizerhofquai 湖畔大道','湖景、飯店街景與山景兼具。','Schweizerhofquai Luzern'],['返回琉森火車站','沿湖或穿越舊城回到車站。','Luzern Bahnhof'] ]},
 {id:'castle',label:'湖畔城堡',icon:'🏰',title:'第二段｜Meggenhorn 城堡花園',subtitle:'搭船最有旅行感；若班次銜接不理想，立即改公車。',metric:'約2.5~3.5 小時'},
 {id:'night',label:'晚間漫步',icon:'🌙',title:'夜間｜河畔與燈影',subtitle:'回到市中心後，以低強度路線收尾。',metric:'約 1～1.5 小時'},
 {id:'morning',label:'離開前',icon:'☀️',title:'第二天早上｜列車前彈性時間',subtitle:'先反推取行李與進站時間，再挑 1 個主景點。',metric:'擇 1～2 處'},
