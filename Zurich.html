@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#075985">
+  <title>蘇黎世旅行規劃｜西岸・巧克力・東岸環線</title>
+  <style>
+    :root{--navy:#073763;--blue:#075fae;--teal:#078577;--ink:#10243e;--muted:#607184;--bg:#edf5f8;--card:#fff;--line:#d7e5ed;--soft:#f5fafc;--amber:#d97706;--shadow:0 10px 30px rgba(17,54,76,.12);--radius:20px;--safe:env(safe-area-inset-bottom,0px)}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);background:linear-gradient(180deg,#e7f3f7 0,#f7fafb 36rem);font-family:system-ui,-apple-system,"Segoe UI","Noto Sans TC",sans-serif;line-height:1.65}img{display:block;max-width:100%}button,a{font:inherit}a{color:inherit}.wrap{width:min(1080px,calc(100% - 28px));margin:auto}
+    .hero{min-height:440px;color:#fff;background-color:#075985;background-image:linear-gradient(112deg,rgba(3,39,78,.96),rgba(5,123,139,.76)),var(--hero-image);background-position:center;background-size:cover;display:flex;align-items:end;padding:78px 0 62px}.eyebrow{display:inline-flex;gap:8px;align-items:center;padding:7px 12px;border:1px solid rgba(255,255,255,.28);border-radius:999px;background:rgba(196,220,228,.42);color:#1a4e68;backdrop-filter:blur(8px);font-size:.88rem;font-weight:700}.hero h1{font-size:clamp(2.7rem,8vw,5.6rem);line-height:1;margin:18px 0 14px;letter-spacing:-.04em}.hero p{max-width:800px;margin:0;color:#e5f6fa;font-size:clamp(1rem,2.4vw,1.22rem)}.notes-link{display:inline-flex;align-items:center;margin-top:18px;padding:10px 14px;border:1px solid rgba(255,255,255,.5);border-radius:11px;background:rgba(255,255,255,.14);color:#fff;font-size:.92rem;font-weight:800;line-height:1.35;text-decoration:none;backdrop-filter:blur(8px)}.notes-link:hover{background:rgba(255,255,255,.24)}.hero-meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}.pill{padding:8px 12px;background:rgba(255,255,255,.14);color:#e5f6fa;border:1px solid rgba(255,255,255,.28);border-radius:12px;font-size:.9rem;backdrop-filter:blur(8px)}
+    .sticky-tabs{position:sticky;top:0;z-index:20;background:#ffffffee;border-bottom:1px solid var(--line);backdrop-filter:blur(14px)}.tabs{display:flex;gap:6px;overflow:auto;padding:10px 0;scrollbar-width:none}.tab{white-space:nowrap;border:0;background:transparent;color:var(--muted);padding:10px 14px;border-radius:12px;font-weight:750;cursor:pointer}.tab.active{color:#fff;background:var(--navy);box-shadow:0 6px 18px #07376335}.main{padding:28px 0 calc(105px + var(--safe))}.main strong{color:#071923}.plan{display:none;animation:rise .35s ease}.plan.active{display:block}@keyframes rise{from{opacity:0;transform:translateY(8px)}}
+    .intro,.route-overview,.section-card,.notice{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}.intro{padding:24px;margin-bottom:18px;display:grid;grid-template-columns:1fr auto;gap:18px;align-items:center}.kicker{color:var(--teal);font-size:.83rem;font-weight:850;letter-spacing:.12em;text-transform:uppercase}.intro h2,.section-title{margin:4px 0 5px;line-height:1.2}.intro p{margin:0;color:var(--muted)}.metric{min-width:128px;text-align:center;background:#edf8f6;border-radius:16px;padding:14px}.metric strong{display:block;font-size:1.45rem;color:var(--teal)}
+    .section-heading{margin:28px 0 12px}.section-heading h2{margin:0;font-size:1.35rem}.section-heading p{margin:3px 0 0;color:var(--muted)}
+    .route-overview{padding:21px;border-top:5px solid var(--accent);margin-bottom:22px}.overview-heading{margin:0 0 12px}.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}.chip{background:rgba(200,220,230,.42);color:#1e5169;border:1px solid rgba(19,75,98,.14);padding:7px 10px;border-radius:999px;font-size:.82rem;font-weight:800}.timeline{display:flex;align-items:center;overflow-x:auto;gap:0;padding:18px 2px 5px;scroll-snap-type:x proximity;scrollbar-width:thin}.timeline-stop{min-width:126px;text-align:center;scroll-snap-align:start}.timeline-stop span{display:block;background:#fff;border:1px solid color-mix(in srgb,var(--accent) 35%,white);border-radius:12px;padding:10px 7px;font-weight:850}.timeline-stop small{display:block;margin-top:5px;color:var(--muted);font-size:.78rem;white-space:nowrap}.connector{min-width:72px;text-align:center;color:var(--accent);font-weight:900}.connector b{display:block;font-size:22px;line-height:1}.connector small{display:block;margin-top:4px;font-size:.75rem;white-space:nowrap}
+    .facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}.fact{padding:14px;border:1px solid var(--line);border-radius:14px;background:var(--soft)}.fact strong{display:block;color:var(--accent);font-size:1.12rem;line-height:1.35}.fact span{display:block;margin-top:4px;color:var(--muted);font-size:.82rem}
+    .route{display:grid;gap:12px}.stop{display:grid;grid-template-columns:54px 140px 1fr auto;gap:14px;align-items:start;padding:16px 17px;background:var(--card);border:1px solid var(--line);border-radius:17px;box-shadow:0 5px 20px rgba(17,54,76,.07)}.stop-image{width:140px;height:90px;object-fit:cover;border-radius:12px;background:#e7eef2}.stop-image.contain{object-fit:contain}.num{width:42px;height:42px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(145deg,var(--navy),var(--blue));color:#fff;font-weight:850}.stop h3{font-size:1rem;margin:0 0 3px}.stop p{color:var(--muted);font-size:.91rem;margin:0}.stop-description-list{list-style:none;display:grid;gap:7px;margin:10px 0 0;padding:0}.stop-description-list li{position:relative;padding-left:30px;color:var(--muted);font-size:.91rem;line-height:1.65}    .item-symbol{position:absolute;top:0;left:0;display:inline-flex;width:24px;height:1.65em;align-items:center;justify-content:center;color:var(--accent);font-weight:900;line-height:1;font-family:"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif}.tag{display:inline-block;margin-left:6px;padding:2px 8px;border-radius:999px;background:rgba(201,222,230,.56);color:#1e5368;border:1px solid rgba(19,75,98,.12);font-size:.72rem;font-weight:800;vertical-align:2px}.tag strong{color:inherit}.stop-links{display:flex;flex-wrap:wrap;align-items:flex-start;gap:7px}.map,.source-link{display:inline-flex;gap:5px;align-items:center;text-decoration:none;font-size:.84rem;font-weight:800;padding:7px 9px;border-radius:10px;white-space:nowrap}.map{color:var(--blue);background:#eef7ff}.source-link{color:#8b5c10;background:#fff7e8}.arrow{height:12px;margin-left:26px;border-left:2px dashed #96b7c7}
+    .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}.section-card{padding:21px}.section-card h3{margin:0 0 10px}.section-card p{color:var(--muted)}.guide-section{height:100%}.guide-section ul{display:grid;gap:8px;margin:14px 0 0;padding:0;list-style:none}.guide-section li{position:relative;padding-left:30px;color:var(--muted)}.notice{padding:17px 19px;margin:16px 0;border-left:5px solid var(--amber);box-shadow:none;background:#fffaf0}.notice strong{color:#955706}    .photo{min-height:220px;border-radius:18px;overflow:hidden;position:relative;background:#b9d2dc;margin:-21px -21px 16px}.photo img{width:100%;height:100%;object-fit:cover;position:absolute}.text-photo{display:grid;place-items:center;background:#e8f4f1;color:var(--accent)}.text-photo-icon{position:static!important;background:none!important;border:0!important;padding:0!important;color:var(--accent)!important;font-size:3.6rem!important;line-height:1}.checklist{display:grid;gap:10px}.check{display:flex;gap:11px;align-items:flex-start;padding:13px;border:1px solid var(--line);border-radius:14px;background:var(--soft);cursor:pointer}.check input{width:20px;height:20px;accent-color:var(--teal);margin-top:2px}.check:has(input:checked){opacity:.58;text-decoration:line-through}.link-list{display:grid;gap:9px}.reference-link{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:var(--soft);color:var(--blue);font-weight:750;text-decoration:none}.reference-link span:last-child{font-size:.82rem;color:var(--muted);white-space:nowrap}
+    .back-home{display:inline-flex;align-items:center;gap:6px;margin-bottom:14px;padding:8px 14px;border:1px solid rgba(255,255,255,.55);border-radius:999px;background:rgba(255,255,255,.14);color:#fff;font-size:.88rem;font-weight:800;text-decoration:none;backdrop-filter:blur(8px)}.back-home:hover{background:rgba(255,255,255,.26)}.bottom-nav{position:fixed;right:0;bottom:0;left:0;z-index:30;background:#ffffffed;border-top:1px solid var(--line);backdrop-filter:blur(16px);padding-bottom:var(--safe)}.bottom-tabs{display:flex;align-items:center;justify-content:center;max-width:800px;margin:auto;padding:7px}.bottom-tabs .tab,.bottom-tabs .home-link{display:grid;gap:1px;place-items:center;font-size:.73rem;padding:6px 10px;border-radius:12px}.bottom-tabs .home-link{text-decoration:none;color:#075fae;background:#edf6ff;font-weight:750}.bottom-plan-tabs{display:flex;justify-content:space-around;flex:1}.bottom-tabs .icon{font-size:1.2rem}
+    @media(max-width:700px){.wrap{width:min(1080px,calc(100% - 20px))}.hero{min-height:390px;padding:60px 0 42px}.intro{grid-template-columns:1fr}.metric{text-align:left}.route-overview{padding:17px}.timeline{margin-right:-17px;padding-right:17px}.timeline-stop{min-width:116px}.facts{grid-template-columns:repeat(2,minmax(0,1fr))}.stop{grid-template-columns:1fr;grid-template-areas:"num" "content" "links" "image";gap:10px;padding:14px}.stop>.num{grid-area:num}.stop-image{width:100%;height:clamp(150px,48vw,230px);grid-area:image;object-fit:cover}.stop>div:nth-of-type(2){grid-area:content;min-width:0}.stop>.stop-links{grid-area:links}.stop-links .map,.stop-links .source-link{width:auto;justify-content:flex-start}.arrow{margin-left:20px}.grid{grid-template-columns:1fr}.photo{margin:-17px -17px 16px}.tabs .tab{padding:9px 11px}.section-card{padding:17px}.reference-link{align-items:flex-start;flex-direction:column;gap:3px}}
+    @media(max-width:420px){.facts{grid-template-columns:1fr}.bottom-tabs .tab,.bottom-tabs .home-link{padding-left:6px;padding-right:6px}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+  </style>
+</head>
+<body>
+<header class="hero">
+  <div class="wrap">
+    <a class="back-home" href="index.html" aria-label="返回首頁">← 返回首頁</a>
+    <span class="eyebrow">🇨🇭 ZÜRICH · 城市湖畔一日環線</span>
+    <h1>蘇黎世</h1>
+    <p>從中央車站走完西岸精華，搭短程大湖遊船前往巧克力博物館，再以 165 號公車回到 Bürkliplatz，最後沿東岸老城走回中央車站。</p>
+    <a class="notes-link" href="https://hackmd.io/ZxHTzNzdRIS1dBsUXMlCpw" target="_blank" rel="noopener noreferrer">📒 開啟完整筆記 ↗</a>
+    <div class="hero-meta">
+      <span class="pill">🚶 西岸＋東岸徒步</span>
+      <span class="pill">🚢 大湖短程遊船</span>
+      <span class="pill">🍫 Lindt 巧克力博物館</span>
+      <span class="pill">🏨 機場住宿</span>
+    </div>
+  </div>
+</header>
+<nav class="sticky-tabs"><div class="wrap tabs" id="topTabs"></div></nav>
+<main class="wrap main" id="planContainer"></main>
+<nav class="bottom-nav">
+  <div class="bottom-tabs">
+    <a class="home-link" href="index.html" aria-label="返回首頁"><span class="icon">⌂</span><span>首頁</span></a>
+    <div class="bottom-plan-tabs" id="bottomTabs"></div>
+  </div>
+</nav>
+<script>
+const topTabs=document.getElementById('topTabs');
+const bottomTabs=document.getElementById('bottomTabs');
+const planContainer=document.getElementById('planContainer');
+const maps=query=>`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
+const placeholder=(text,index)=>`https://placehold.co/640x360/e7eef2/5d6c7d?text=${encodeURIComponent(text+' '+index)}`;
+const imageSources={
+  hero:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6enZa-pQsIE_PmIW5c6erG6Bp8JVScdbms0WnYsGMLQ&s=10',
+  west:'https://g.udn.com.tw/upfiles/B_IC/ice2005/PSN_PHOTO/333/f_28364333_1.jpg',
+  cruise:'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/K%C3%A4ferberg_-_Lindenhof_-_Schipfe_-_Limmat_-_Sicht_vom_Grossm%C3%BCnster_Karlsturm_IMG_6425.JPG/1920px-K%C3%A4ferberg_-_Lindenhof_-_Schipfe_-_Limmat_-_Sicht_vom_Grossm%C3%BCnster_Karlsturm_IMG_6425.JPG?utm_source=zh.wikipedia.org&utm_campaign=index&utm_content=thumbnail',
+  chocolate:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTz95vPeK4fQ5plok99n0YEAfXR0iVNGpXEBN-5kA5Qmw&s=10',
+  east:'https://placehold.co/1200x700/315b73/ffffff?text=Zurich+East+Bank+Old+Town',
+  food:'https://placehold.co/1200x700/9a5a00/ffffff?text=Zurich+Food+Stops',
+  stay:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSipYTaAsrdsOXCt4EvC_cPMULN-_bOP2sWxzIjHTo5oA&s=10',
+  church: 'https://lh3.googleusercontent.com/gps-cs-s/AHRPTWlkvvNSteFQH1boMIHK4VWHiUqr3VsF2jH4ksiHl927GqjuBKgfulMna_2nV9g2zZ3wlzo2NfFjJoL56gwEPVNgJxiLcH2w6hMQCswL-EPj9Yb3jLZW7O2MixiijMjCY7UJYwBP=s1360-w1360-h1020-rw',
+  mainStreet: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfeNwaYvshmI4E2dtmPLBv-0fMsqBFgvjgI8OGXEBIRQ&s=10',
+  lakeshore: 'https://media.zuerich.com/image/727218228053/image_fj7tdjfgh13bn02ufl4lif3a2b/-FWEBP%2CQ85-C1367x819%2C0%2C615-S2432x1458',
+  opernhaus: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTP-Yq9974Dwcm9q2-Vc_JOgeSyuK3H0EqhxttJlSR4Ug&s=10',
+  church2: 'https://static.liontech.com.tw/DS/go_images/1/6712/6713/6714/Q684948/Zurich_city1.webp',
+  niderdorf: 'https://c8.alamy.com/comp/2WP2AEX/zurich-switzerland-april-3-2022-niederdorfstrasse-is-one-of-the-most-popular-recreational-areas-in-altstadt-old-town-on-april-3-in-zurich-swi-2WP2AEX.jpg',
+  swiss_museum: 'https://lh3.googleusercontent.com/gps-cs-s/AHRPTWmThs9LgmQxky5HEKKWShTHCxnO90aMHf-TPWV5ni2rzbcjp8P9gFN5aHqDAtkTLhjBedPFgFSVo-8tIw-edfv7T7trLlhHNWWbdidtnYYFC7sY3cwzC-2eI6fPNkvZAY2w0mmKHA=s1360-w1360-h1020-rw',
+  zurich_view: 'https://images.contentstack.io/v3/assets/blt06f605a34f1194ff/blt3feae4b375474a37/67ec32e1901312c94406c43c/BCC-2024-EXPLORER-ZURICH-FUN-THINGS-TO-DO-HEADER_MOBILE.jpg?fit=crop&auto=webp&quality=60&crop=smart&format=avif',
+  coop:'https://bigsharkgogogo.tw/wp-content/uploads/2025/09/coopbuffet-32.webp',
+  ShopVille:'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/34/00/37/ed/caption.jpg?w=1400&h=-1&s=1',
+}
+const imageURL=(name,index)=>imageSources[name]||placeholder(name,index);
+
+const travelNameCatalog=[
+  'Zürich HB','中央車站','班霍夫大街','Bahnhofstrasse','林登霍夫山','Lindenhof',
+  '奧古斯丁巷','Augustinergasse','聖彼得教堂','St. Peter','聖母大教堂','Fraumünster',
+  '軍械庫餐廳','Zeughauskeller','Bürkliplatz','Bürkliterrasse','Ganymede',
+  '蘇黎世湖','Lake Zurich','Kilchberg ZH','Lindt Home of Chocolate','巧克力博物館',
+  '165 號公車','Seestrasse','Quaibrücke','塞克瑟洛伊滕廣場','Sechseläutenplatz',
+  '蘇黎世歌劇院','Utoquai','Limmatquai','利馬特河岸大道','Grossmünster',
+  '蘇黎世大教堂','Rathaus','蘇黎世市政廳','Niederdorf','瑞士國立博物館',
+  '蘇黎世車站地下街','Migros','Coop','Brezelkönig','Holiday Inn Express Zürich Airport',
+  'Rümelbach','Zürich Oerlikon','琉森','Luzern', 'Kilchberg ZH (lake)'
+];
+const travelNamePattern=new RegExp(`(${travelNameCatalog.map(value=>value.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')).sort((a,b)=>b.length-a.length).join('|')})`,'gi');
+
+function boldTravelTerms(text){
+  if(!text||typeof text!=='string') return text;
+  return text.split(/(<[^>]+>)/g).map(part=>{
+    if(part.startsWith('<')&&part.endsWith('>')) return part;
+    return part.replace(travelNamePattern,'<strong>$1</strong>');
+  }).join('');
+}
+
+document.documentElement.style.setProperty('--hero-image',`url("${imageSources.hero}")`);
+
+const travelData={tabs:[
+  {
+    id:'route',type:'route',label:'完整環線',icon:'🧭',
+    title:'完整一日路線｜西岸 → 巧克力 → 東岸',
+    accent:'#075fae',subtitle:'把四個階段串成一條大環線：上午西岸徒步，中午湖上移動與巧克力博物館，下午搭 165 號公車回市區，再沿東岸老城北上回到中央車站。',metric:'一日環線',
+    notice:'遊船班次、Lindt Home of Chocolate 的開放時間與 165 號公車時刻，請出發前再次確認；整體路線以步行為主，建議保留用餐與湖畔折返的彈性。',
+    overview:{chips:['西岸精華徒步','Short Lake Cruise','165 號公車','東岸老城環線'],timeline:[
+      {name:'Zürich HB',note:'上午出發'},
+      {name:'西岸精華',note:'一路向南',mode:'🚶'},
+      {name:'Bürkliplatz',note:'登船',mode:'📍'},
+      {name:'Kilchberg',note:'約 25 分鐘',mode:'🚢'},
+      {name:'Lindt Home',note:'參觀與購物',mode:'🍫'},
+      {name:'Bürkliplatz',note:'約 13 分鐘',mode:'🚌'},
+      {name:'東岸老城',note:'一路向北',mode:'🚶'},
+      {name:'Zürich HB',note:'完成環線',mode:'🏁'}
+    ]},
+    stops:[
+      {name:'Zürich HB 與班霍夫大街',image:imageSources.mainStreet,description:'🚉 從【中央車站 Zürich HB】出發，進入班霍夫大街；這裡同時是整圈路線的起點與最後回到的終點。<br>🛍️ 班霍夫大街是貫穿西岸南北的中央主軸，後續景點多從這條街向東延伸。<br>🍽️ 一早需要補給時，可順路 Coop 或 Migros (也都有附設餐廳)。',map:'Zürich HB, Zürich',tag:'起點'},
+      {name:'林登霍夫山與奧古斯丁巷',image:imageSources.west,description:'🌿 從班霍夫大街向東走，先到林登霍夫山看城市與利馬特河，再穿過奧古斯丁巷。<br>📷 這段適合慢慢拍照，街巷景點依序步行即可串起。<br>🍽️ 軍械庫餐廳 Zeughauskeller 位於奧古斯丁巷與聖彼得教堂之間，為彈性拍照點。',map:'Lindenhof, Zürich',tag:'上午'},
+      {name:'聖彼得教堂與聖母大教堂',image:imageSources.church,description:'⛪ 沿西岸側邊繼續走，依序參觀聖彼得教堂與聖母大教堂。<br>🧭 不必另外繞路，兩大教堂都在班霍夫大街向東的徒步支線上。',map:'Fraumünster, Zürich',tag:'西岸地標'},
+      {name:'Bürkliplatz 湖畔碼頭',image:imageSources.lakeshore,description:'📍 西岸一路向南的終點，在 Bürkliplatz 登上短程大湖遊船。<br>🌊 登船前先到 Bürkliterrasse 觀景台與 Ganymede 雕像拍湖景。<br>⏱️ Short Lake Cruise 約每小時一班，實際時刻請出發前確認。',map:'Bürkliplatz, Zürich',tag:'登船點'},
+      {name:'短程大湖遊船｜Kilchberg ZH',image:imageSources.cruise,description:'🚢 從 Bürkliplatz 搭乘 Short Lake Cruise，坐在船上吹風並欣賞蘇黎世湖兩岸風光。<br>⏱️ 航行約 25 分鐘，在 <strong>Kilchberg ZH (lake)</strong> 碼頭下船。<br>🚶 下船後步行約 10 分鐘即可抵達 Lindt Home of Chocolate。',map:'Kilchberg ZH (lake), Switzerland',tag:'中午轉場'},
+      {name:'Lindt Home of Chocolate',image:imageSources.chocolate,description:'🍫 不買票，大廳看9公尺高的<strong>巨型巧克力噴泉</strong>、逛全世界最大的<strong>瑞士蓮巧克力專賣店</strong>，以及去咖啡廳消費。',map:'Lindt Home of Chocolate, Kilchberg',tag:'主要體驗',source:{label:'博物館官方網站',url:'https://www.lindt-home-of-chocolate.com/'}},
+      {name:'165 號公車｜Kilchberg → Bürkliplatz',image:imageSources.cruise,description:'🚌 參觀完直接走到博物館門口的 <strong>Kilchberg ZH, Lindt & Sprüngli</strong> 站搭乘 165 號公車。<br>🌊 公車沿美麗湖濱公路 Seestrasse 一路北上。<br>⏱️ 車程約 13 分鐘，在 Bürkliplatz（起點碼頭）下車。',map:'Kilchberg ZH, Lindt & Sprüngli, Switzerland',tag:'下午回程'},
+      {name:'Quaibrücke、廣場與歌劇院',image:imageSources.opernhaus,description:'🚶 從 Bürkliplatz 下車後走上 Quaibrücke<strong>橋</strong> 橫跨利馬特河，抵達東岸最南端。<br>🎭 下橋即是塞克瑟洛伊滕廣場與蘇黎世歌劇院。<br>🦢 若還有時間，可沿 Utoquai 湖畔長廊向南走一小段，看天鵝後原路折返。',map:'Zürich Opera House, Switzerland',tag:'東岸南端'},
+      {name:'Limmatquai、Grossmünster 與 Rathaus',image:imageSources.church2,description:'🏛️ 從歌劇院區沿利馬特河岸大道 Limmatquai 一路向北。<br>⛪ 參觀蘇黎世大教堂 Grossmünster；若沿河岸再走約 2 分鐘，可從外部欣賞水上建築蘇黎世市政廳 Rathaus。',map:'Grossmünster, Zürich',tag:'沿河北上'},
+      {name:'Niederdorf → Zürich HB',image:imageSources.niderdorf,description:'🛍️ 鑽進大教堂後方的 Niederdorf (google: <strong>Niederdorfstrasse</strong>)，沿復古老街一路逛回中央車站，完成市區環線。<br>🏛️ 若時間充裕，可加碼瑞士國立博物館 (持STP免費)；平常 17:00 關，<strong>週四延長至 19:00</strong>。<br>🛒 晚餐或宵夜也可在蘇黎世車站地下街解決，內有 Migros、Coop 與 Brezelkönig (德國鹼水蝴蝶麵包)。',map:'Zürich Hauptbahnhof, Switzerland',tag:'終點'}
+    ],
+    highlights:[
+      {title:'奧古斯丁巷',image:imageSources.west,description:'位於瑞士蘇黎世老城區的奧古斯丁巷，是一條充滿中世紀風情與彩色挑樓建築的著名步行街，以懸掛的瑞士國旗和浪漫懷舊的石板路聞名。'},
+      {title:'林登霍夫山',image:imageSources.cruise,description:'林登霍夫山（Lindenhof）在歷史上曾是羅馬時期的要塞與加洛林王朝的皇宮所在地，如今則是俯瞰蘇黎世舊城區與利馬特河的綠洲廣場。'},
+      {title:'尼德道夫街區',image:imageSources.niderdorf,description:'尼德道夫是蘇黎世舊城的核心徒步區。白天，中世紀巷弄內佈滿古董店與咖啡館，文藝感十足；夜晚則變身酒吧與異國餐廳林立的夜生活勝地，充滿活力。'}
+    ],
+    links:[
+      {label:'瑞士鐵路與跨城交通（SBB）',url:'https://www.sbb.ch/en'},
+    ],
+    checks:['確認 Short Lake Cruise 是否每小時發船與登船位置','確認 Lindt Home of Chocolate 開放時間與預約','若要加碼瑞士國立博物館，注意平日 17:00／週四 19:00 閉館','依日落與體力決定是否走 Utoquai']
+  },
+  {
+    id:'sights',type:'guide',label:'景點導覽',icon:'🏛️',
+    title:'景點導覽｜湖岸、老城與巧克力',
+    accent:'#078577',subtitle:'',metric:'景點專題',
+    notice:'',
+    facts:[],
+    sections:[
+      {title:'西岸精華｜由北往南',description:'班霍夫大街是西岸南北主軸，側邊景點依序向東延伸，適合不斷回到主街定位。',items:[
+        '🚉 從 Zürich HB 出發，先走班霍夫大街，沿途把市中心主軸當作方向參考。',
+        '🌿 林登霍夫山可安排城市與利馬特河景觀；再走進奧古斯丁巷拍攝老街。',
+        '⛪ 聖彼得教堂與聖母大教堂是西岸兩大教堂，可依序步行參觀。',
+        '🍽️ 軍械庫餐廳 Zeughauskeller 位於奧古斯丁巷與聖彼得教堂之間，屬於彈性拍照點。'
+      ]},
+      {title:'湖畔與巧克力轉場',description:'把 Bürkliplatz 當作西岸徒步與湖上交通的接點，抵達 Kilchberg 後再接博物館。',items:[
+        '⚓ Bürkliplatz 是短程大湖遊船的登船碼頭，也是 165 號公車的回程下車點。',
+        '🌊 登船前可到 Bürkliterrasse 與 Ganymede 雕像拍攝蘇黎世湖景。',
+        '🚢 Short Lake Cruise 約每小時一班，航行約 25 分鐘，沿途可欣賞湖岸風光。',
+        '📍 在 Kilchberg ZH (lake) 碼頭下船後，步行約 10 分鐘到 Lindt Home of Chocolate。',
+        '🍫 博物館重點是世界最大巧克力噴泉與巧克力商店，建議預留完整參觀時間。'
+      ]},
+      {title:'東岸精華｜由南往北',description:'回到<strong> 湖畔碼頭 Bürkliplatz</strong> 後先過橋，再沿湖岸與利馬特河岸大道向北，最後進入老城徒步街。',items:[
+        '🌉 走 <strong>Quaibrücke 橋</strong> 橫跨利馬特河，下橋即抵達塞克瑟洛伊滕廣場與蘇黎世歌劇院。',
+        '🦢 Utoquai 湖畔長廊適合向南散步一小段，看天鵝、吹湖風後原路折返。',
+        '🏛️ 沿 利馬特河岸大道 Limmatquai 北上，參觀 蘇黎世大教堂 Grossmünster；再走約 2 分鐘可看 蘇黎世市政廳 Rathaus 的水上外觀。',
+        '🛍️ 鑽進  <strong>蘇黎世大教堂</strong> 後方的 尼德道夫 Niederdorf 徒步街，沿復古老街一路逛回 Zürich HB。'
+      ]},
+      {title:'中央車站附近加碼',description:'若環線提早完成，可把最後的時間留給車站周邊，不必再拉遠交通距離。',items:[
+        '🏛️ 瑞士國立博物館平常 17:00 關閉，週四延長至 19:00，安排前先確認當日資訊。',
+        '🛒 蘇黎世車站地下街適合補充晚餐與宵夜，現場可找到 Migros、Coop 與 Brezelkönig (蝴蝶結麵包店)。',
+        '🚆 Zürich HB 同時是回住宿、轉往機場或前往琉森的重要交通節點。'
+      ]}
+    ],
+    highlights:[
+      {title:'老城與湖岸',image:imageSources.zurich_view,description:'同一天把<strong>西岸老城、蘇黎世湖與東岸河岸街</strong>景串在一起。'},
+      {title:'瑞士國立博物館',image:imageSources.swiss_museum,description:'位於蘇黎世中央車站旁，是了解瑞士歷史與文化的重要景點。'}
+    ],
+    links:[
+      {label:'Lindt Home of Chocolate 官方網站',url:'https://www.lindt-home-of-chocolate.com/'},
+      {label:'Zürich Tourism 官方景點資訊',url:'https://www.zuerich.com/en/visit'}
+    ],
+    checks:[]
+  },
+  {
+    id:'food',type:'guide',label:'美食補給',icon:'🍽️',
+    title:'美食補給｜西岸、東岸與車站地下街',
+    accent:'#b45309',subtitle:'把餐廳、超市與蝴蝶結麵包店按路線位置整理；需要時直接插入完整環線，不必為了吃飯繞路。',metric:'全程適用',
+    notice:'以下店家是 Zurich.md 中的順路選項；營業時間與實際分店位置請出發前確認，若行程較趕可優先使用車站或超市快速補給。',
+    facts:[{label:'西岸上午',value:'2 個選項'},{label:'東岸下午',value:'2 個選項'},{label:'晚餐宵夜',value:'地下街'},{label:'策略',value:'順路補給'}],
+    sections:[
+      {title:'西岸上午｜班霍夫大街沿線',description:'從中央車站剛走進市區主軸時就能安排，適合早餐、早午餐或徒步中途補充。',items:[
+        '🛒 Coop 餐廳（St. Annahof 店）：直接在班霍夫大街上，頂樓有漂亮的露天陽台。',
+        '🛒 Migros 餐廳（City 店）：在班霍夫大街西側平行一條街，是市中心座位多、熟食選擇很大的旗艦平價餐廳。',
+      ]},
+      {title:'東岸下午｜過橋到歌劇院',description:'165 號公車在 湖畔碼頭 Bürkliplatz 下車後，走過湖岸橋便進入東岸用餐選擇。',items:[
+        '🛒 Coop 餐廳（Bellevue 店）：剛過 Quaibrücke 的廣場旁，是歌劇院周邊較能控制預算的平價選項。',
+        '🛒 Migros 餐廳（Stadelhofen 店）：位於歌劇院與旁邊火車站後方，買完可直接帶到 Utoquai 湖畔長廊野餐。',
+        '🌊 若天氣好，可把買到的餐點和湖畔散步合併安排。'
+      ]},
+      {title:'晚餐與宵夜｜蘇黎世車站地下街',description:'完成 Niederdorf 老街與環線後，回到車站即可處理晚餐、宵夜或隔天交通前的採買。',items:[
+        '🛒 Migros 超市：適合買飲料、簡單食物或隔天路上的補給。',
+        '🛒 Coop 超市：可與 Migros 互相比較品項與營業狀況。',
+        '🥨 Brezelkönig（蝴蝶結麵包店）：適合快速外帶，作為晚餐或宵夜的簡便選擇。',
+        '📒詳細可以看另一個<strong>食物攻略筆記</strong>'
+      ]}
+    ],
+    highlights:[
+      {title:'超市餐廳',image:imageSources.coop,description:'Coop或Migros自家餐廳，選擇多、價格平實。'},
+      {title:'車站地下街',image:imageSources.ShopVille,description:'完成環線後可在 Zürich HB 的地下街一次處理晚餐、宵夜與採買。'}
+    ],
+    links:[
+      {label:'Migros 官方網站',url:'https://www.migros.ch/'},
+      {label:'Coop 官方網站',url:'https://www.coop.ch/'},
+      {label:'Brezelkönig 官方網站',url:'https://www.brezelkoenig.ch/'}
+    ],
+    checks:['依當天體力狀況，安排食物補給與餐廳選擇']
+  },
+  {
+    id:'stay',type:'guide',label:'住宿交通',icon:'🏨',
+    title:'住宿交通｜Zürich Airport 與前往琉森',
+    accent:'#42677a',subtitle:'整理機場附近住宿的訂單、接駁方式、周邊機能，以及由飯店前往 Zürich HB 和 琉森的兩種思路。',metric:'住宿專題',
+    notice:'住宿價格、城市稅、接駁車收費與班次都可能變動；退款期限與當日交通請以訂單、飯店通知及官方交通資訊為準。',
+    facts:[{label:'住宿',value:'Holiday Inn Express'},{label:'房價',value:'CHF 133.09'},{label:'城市稅',value:'另加 CHF 7'},{label:'退款確認',value:'2027/06 前'}],
+    sections:[
+      {title:'住宿訂單與退款',description:'目前安排的是蘇黎世機場附近的 Holiday Inn Express Zürich Airport。',items:[
+        '🏨 已訂機場附近酒店 Holiday Inn Express Zürich Airport。',
+        '💳 住宿價格為 133.09 瑞郎，尚未包含 7 CHF 城市稅。',
+        '📅 2027 年 6 月前要再確認是否可退款，以及訂單的實際退款條件。'
+      ]},
+      {title:'機場 → 飯店',description:'有免費飯店 <strong>Shuttle Bus與公車</strong>兩種方式，依抵達時間與行李量選擇。',items:[
+        '🚐 接駁車：直接走出第二航廈門口，搭航廈外的飯店 Shuttle Bus 廂型車直達；機場到酒店免費。',
+        '🚌 公車：步行約 3 分鐘至中央大樓公車站，搭 510 號公車到 Rümelbach 站，再步行約 5 分鐘到飯店。'
+      ]},
+      {title:'飯店 → 琉森',description:'兩個方向都可到 Zürich HB 或 Zürich Oerlikon 轉車，第一種通常較直觀。',items:[
+        '🚆 方案一：走到附近火車站 → 前往 Zürich HB（筆記標示 -2層、43/44月台）→ Zürich HB 平面月台 -> Luzern，約每半小時一班。',
+        '🚆 方案二：走到附近火車站 → Zürich Oerlikon → Luzern，約一小時一班；整體因轉乘等待，通常需要更久。',
+        '⏱️ 出發前以 SBB 查詢當日月台、轉乘時間與施工調整，不要只依固定印象搭車。'
+      ]},
+      {title:'飯店附近機能',description:'住宿旁的採買與快速餐飲很完整，適合抵達日或晚間不想進市區時使用。',items:[
+        '🛒 超級市場就在隔壁，步行約 1～2 分鐘、約 100 公尺內有 Migros 超市與 Aldi 德國平價超市。',
+        '🍗 可低成本買到烤雞、三明治、優格、巧克力、水果與飲料，減少每餐都在餐廳用餐的支出。',
+        '🍔 超市旁步行 3 分鐘內有 McDonalds 麥當勞與 Subway，可快速解決一餐。',
+        '🌙 飯店大廳餐廳與酒吧 24 小時營業，深夜仍可購買點心與飲料。'
+      ]}
+    ],
+    highlights:[
+      {title:'Holiday Inn Express Zurich Airport',image:imageSources.stay,description:'先把接駁、退款與城市稅記清楚，抵達日就能減少不確定性。'},
+    ],
+    links:[
+    ],
+    checks:['2027 年 6 月前確認住宿退款','抵達前確認第二航廈 搭接駁車 與 市區巴士 位置 ',]
+  }
+]};
+
+function header(plan){
+  return `<section class="intro"><div><div class="kicker">${plan.type==='guide'?'Guide Content':'Daily Route'}</div><h2>${boldTravelTerms(plan.title)}</h2><p>${boldTravelTerms(plan.subtitle)}</p></div><div class="metric"><strong>${plan.metric}</strong><span>${plan.type==='guide'?'重點':''}</span></div></section>`;
+}
+
+function sourceHTML(source){
+  return source?`<a class="source-link" target="_blank" rel="noopener" href="${source.url}">${source.label} ↗</a>`:'';
+}
+
+function cleanItemText(text){return text.trim().replace(/^[^\p{L}\p{N}\s]+/u,'').trim();}
+
+function itemHTML(text){
+  const trimmedText=text.trim();
+  const symbolMatch=trimmedText.match(/^[^\p{L}\p{N}\s]+/u);
+  const symbol=symbolMatch?symbolMatch[0]:'✦';
+  const cleanText=boldTravelTerms(cleanItemText(trimmedText));
+  return `<li><span class="item-symbol" aria-hidden="true">${symbol}</span>${cleanText}</li>`;
+}
+
+function stopHTML(stop,index){
+  const image=stop.image||imageURL(stop.name,index+1);
+  const bulletText=stop.description.includes('<br>')?stop.description.split('<br>').map(part=>part.trim()).filter(Boolean).map(itemHTML).join(''):'';
+  const descriptionMarkup=bulletText?`<ul class="stop-description-list">${bulletText}</ul>`:`<p>${boldTravelTerms(stop.description)}</p>`;
+  return `${index?'<div class="arrow"></div>':''}<article class="stop"><div class="num">${String(index+1).padStart(2,'0')}</div><img class="stop-image" src="${image}" alt="${stop.name} 圖片" loading="lazy"><div><h3>${boldTravelTerms(stop.name)}${stop.tag?`<span class="tag">${stop.tag}</span>`:''}</h3>${descriptionMarkup}</div><div class="stop-links"><a class="map" target="_blank" rel="noopener" href="${maps(stop.map)}">地圖 ↗</a>${sourceHTML(stop.source)}</div></article>`;
+}
+
+function highlightHTML(highlight){
+  const image=highlight.image||imageSources[highlight.title]||'';
+  const media=image?`<img loading="lazy" src="${image}" alt="${highlight.title}">`:`<span class="text-photo-icon">${highlight.icon||'✦'}</span>`;
+  const photoClass=image?'':' text-photo';
+  return `<section class="section-card"><div class="photo${photoClass}">${media}</div><h3>${boldTravelTerms(highlight.title)}</h3><p>${boldTravelTerms(highlight.description)}</p></section>`;
+}
+
+function overviewHTML(plan){
+  const overview=plan.overview;
+  if(!overview) return '';
+  const timeline=overview.timeline.map((stop,index)=>`${index?`<div class="connector"><b>${stop.mode||'→'}</b><small>${stop.note||'移動'}</small></div>`:''}<div class="timeline-stop"><span>${stop.name}</span>${stop.note&&!index?`<small>${stop.note}</small>`:''}</div>`).join('');
+  return `<section class="route-overview" aria-label="路線總覽"><div class="section-heading overview-heading"><h2>路線總覽</h2><p>用一條流程線快速掌握整體方向，再查看下方的停靠點細節。</p></div><div class="chips">${overview.chips.map(chip=>`<span class="chip">${chip}</span>`).join('')}</div><div class="timeline" aria-label="蘇黎世推薦玩法時間軸">${timeline}</div></section>`;
+}
+
+function factsHTML(plan){
+  if(!plan.facts?.length) return '';
+  return `<section class="route-overview" aria-label="內容摘要"><div class="section-heading overview-heading"><h2>內容摘要</h2><p>先用幾個關鍵數字掌握這個 Tab 的用途。</p></div><div class="facts">${plan.facts.map(fact=>`<div class="fact"><strong>${boldTravelTerms(fact.value)}</strong><span>${boldTravelTerms(fact.label)}</span></div>`).join('')}</div></section>`;
+}
+
+function guideSectionsHTML(plan){
+  return `<div class="section-heading"><h2>重點內容</h2></div><div class="grid">${plan.sections.map(section=>`<section class="section-card guide-section"><h3>${boldTravelTerms(section.title)}</h3><p>${boldTravelTerms(section.description)}</p><ul>${section.items.map(itemHTML).join('')}</ul></section>`).join('')}</div>`;
+}
+
+function linksHTML(plan){
+  if(!plan.links?.length) return '';
+  return `<div class="section-heading"><h2>參考連結</h2><p>開啟官方交通、景點或住宿資訊，出發前再確認最新狀態。</p></div><section class="section-card"><div class="link-list">${plan.links.map(link=>`<a class="reference-link" target="_blank" rel="noopener" href="${link.url}"><span>${boldTravelTerms(link.label)}</span><span>開啟連結 ↗</span></a>`).join('')}</div></section>`;
+}
+
+function checklistHTML(plan,title,description){
+  return `<div class="section-heading"><h2>${title}</h2><p>${boldTravelTerms(description)}</p></div><section class="section-card"><div class="checklist">${plan.checks.map((check,index)=>`<label class="check"><input type="checkbox" data-key="${plan.id}-${index}"><span>${boldTravelTerms(check)}</span></label>`).join('')}</div></section>`;
+}
+
+function renderRoutePlan(plan){
+  return `<section class="plan" id="${plan.id}" style="--accent:${plan.accent||'var(--blue)'}">${header(plan)}<div class="notice"><strong>行程提醒：</strong>${plan.notice}</div>${overviewHTML(plan)}<div class="section-heading"><h2>行程路線</h2><p>依四個階段與實際停靠順序列出完整環線。</p></div><div class="route">${plan.stops.map(stopHTML).join('')}</div><div class="section-heading"><h2>特色照片與重點</h2><p>這條路線最具代表性的城市、湖景與體驗。</p></div><div class="grid">${plan.highlights.map(highlightHTML).join('')}</div>${linksHTML(plan)}${checklistHTML(plan,'出發前 Checklist','勾選狀態會保存在目前瀏覽器。')}</section>`;
+}
+
+function renderGuidePlan(plan){
+  return `<section class="plan" id="${plan.id}" style="--accent:${plan.accent||'var(--blue)'}">${header(plan)}${factsHTML(plan)}${guideSectionsHTML(plan)}<div class="section-heading"><h2>特色照片與重點</h2><p>最具代表性的景觀、體驗或實用主題。</p></div><div class="grid">${plan.highlights.map(highlightHTML).join('')}</div>${linksHTML(plan)}${checklistHTML(plan,'Checklist','勾選狀態會保存在目前瀏覽器。')}</section>`;
+}
+
+function renderPlan(plan){return plan.type==='guide'?renderGuidePlan(plan):renderRoutePlan(plan);}
+function renderPlans(){planContainer.innerHTML=travelData.tabs.map(renderPlan).join('');restoreChecks();}
+function renderTabs(){
+  const tabs=travelData.tabs.map(plan=>`<button class="tab" data-target="${plan.id}"><span class="icon">${plan.icon}</span><span>${plan.label}</span></button>`).join('');
+  topTabs.innerHTML=tabs;
+  bottomTabs.innerHTML=tabs;
+}
+function showPlan(id,updateHash=true,shouldScroll=true){
+  document.querySelectorAll('.plan').forEach(plan=>plan.classList.toggle('active',plan.id===id));
+  document.querySelectorAll('[data-target]').forEach(tab=>tab.classList.toggle('active',tab.dataset.target===id));
+  if(updateHash) history.replaceState(null,'',`#${id}`);
+  if(shouldScroll){
+    const main=document.getElementById('planContainer');
+    const sticky=document.querySelector('.sticky-tabs');
+    const targetY=main?main.offsetTop-(sticky?sticky.offsetHeight:0)-12:0;
+    window.scrollTo({top:Math.max(targetY,0),left:0,behavior:'smooth'});
+  }
+}
+function restoreChecks(){
+  document.querySelectorAll('[data-key]').forEach(checkbox=>{
+    const key=`zurich-travel-${checkbox.dataset.key}`;
+    checkbox.checked=localStorage.getItem(key)==='1';
+    checkbox.onchange=()=>localStorage.setItem(key,checkbox.checked?'1':'0');
+  });
+}
+
+renderTabs();
+renderPlans();
+document.addEventListener('click',event=>{
+  const tab=event.target.closest('[data-target]');
+  if(tab) showPlan(tab.dataset.target);
+});
+const planIds=travelData.tabs.map(plan=>plan.id);
+const initialPlan=planIds.includes(location.hash.slice(1))?location.hash.slice(1):planIds[0];
+showPlan(initialPlan,false,false);
+window.addEventListener('hashchange',()=>{
+  const id=location.hash.slice(1);
+  if(planIds.includes(id)) showPlan(id,false,false);
+});
+</script>
+</body>
+</html>

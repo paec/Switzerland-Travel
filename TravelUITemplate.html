@@ -1,0 +1,441 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#075985">
+  <title>旅行規劃模板｜行程與景點分頁</title>
+  <style>
+    :root{--navy:#073763;--blue:#075fae;--teal:#078577;--ink:#10243e;--muted:#607184;--bg:#edf5f8;--card:#fff;--line:#d7e5ed;--soft:#f5fafc;--amber:#d97706;--shadow:0 10px 30px rgba(17,54,76,.12);--radius:20px;--safe:env(safe-area-inset-bottom,0px)}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);background:linear-gradient(180deg,#e7f3f7 0,#f7fafb 36rem);font-family:system-ui,-apple-system,"Segoe UI","Noto Sans TC",sans-serif;line-height:1.65}img{display:block;max-width:100%}button,a{font:inherit}a{color:inherit}.wrap{width:min(1080px,calc(100% - 28px));margin:auto}
+    .hero{min-height:440px;color:#fff;background-color:#075985;background-image:linear-gradient(112deg,rgba(3,39,78,.96),rgba(5,123,139,.76)),var(--hero-image);background-position:center;background-size:cover;display:flex;align-items:end;padding:78px 0 62px}.eyebrow{display:inline-flex;gap:8px;align-items:center;padding:7px 12px;border:1px solid #ffffff55;border-radius:999px;background:#ffffff18;backdrop-filter:blur(8px);font-size:.88rem;font-weight:700}.hero h1{font-size:clamp(2.7rem,8vw,5.6rem);line-height:1;margin:18px 0 14px;letter-spacing:-.04em}.hero p{max-width:760px;margin:0;color:#e5f6fa;font-size:clamp(1rem,2.4vw,1.22rem)}.hero-meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}.pill{padding:8px 12px;background:#ffffff18;border:1px solid #ffffff35;border-radius:12px;font-size:.9rem}
+    .sticky-tabs{position:sticky;top:0;z-index:20;background:#ffffffee;border-bottom:1px solid var(--line);backdrop-filter:blur(14px)}.tabs{display:flex;gap:6px;overflow:auto;padding:10px 0;scrollbar-width:none}.tab{white-space:nowrap;border:0;background:transparent;color:var(--muted);padding:10px 14px;border-radius:12px;font-weight:750;cursor:pointer}.tab.active{color:#fff;background:var(--navy);box-shadow:0 6px 18px #07376335}.main{padding:28px 0 calc(105px + var(--safe))}.main strong{color:#071923}.plan{display:none;animation:rise .35s ease}.plan.active{display:block}@keyframes rise{from{opacity:0;transform:translateY(8px)}}
+    .intro,.route-overview,.section-card,.notice{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}.intro{padding:24px;margin-bottom:18px;display:grid;grid-template-columns:1fr auto;gap:18px;align-items:center}.kicker{color:var(--teal);font-size:.83rem;font-weight:850;letter-spacing:.12em;text-transform:uppercase}.intro h2,.section-title{margin:4px 0 5px;line-height:1.2}.intro p{margin:0;color:var(--muted)}.metric{min-width:128px;text-align:center;background:#edf8f6;border-radius:16px;padding:14px}.metric strong{display:block;font-size:1.45rem;color:var(--teal)}
+    .section-heading{margin:28px 0 12px}.section-heading h2{margin:0;font-size:1.35rem}.section-heading p{margin:3px 0 0;color:var(--muted)}
+    .route-overview{padding:21px;border-top:5px solid var(--accent);margin-bottom:22px}.overview-heading{margin:0 0 12px}.route-text{font-weight:750;line-height:1.7}.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}.chip{background:color-mix(in srgb,var(--accent) 10%,white);color:var(--accent);padding:7px 10px;border-radius:999px;font-size:.82rem;font-weight:800}.timeline{display:flex;align-items:center;overflow-x:auto;gap:0;padding:18px 2px 5px;scroll-snap-type:x proximity;scrollbar-width:thin}.timeline-stop{min-width:126px;text-align:center;scroll-snap-align:start}.timeline-stop span{display:block;background:#fff;border:1px solid color-mix(in srgb,var(--accent) 35%,white);border-radius:12px;padding:10px 7px;font-weight:850}.timeline-stop small{display:block;margin-top:5px;color:var(--muted);font-size:.78rem;white-space:nowrap}.connector{min-width:72px;text-align:center;color:var(--accent);font-weight:900}.connector b{display:block;font-size:22px;line-height:1}.connector small{display:block;margin-top:4px;font-size:.75rem;white-space:nowrap}
+    .facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.fact{padding:14px;border:1px solid var(--line);border-radius:14px;background:var(--soft)}.fact strong{display:block;color:var(--accent);font-size:1.12rem;line-height:1.35}.fact span{display:block;margin-top:4px;color:var(--muted);font-size:.82rem}
+    .route{display:grid;gap:12px}.stop{display:grid;grid-template-columns:54px 140px 1fr auto;gap:14px;align-items:start;padding:16px 17px;background:var(--card);border:1px solid var(--line);border-radius:17px;box-shadow:0 5px 20px rgba(17,54,76,.07)}.stop-image{width:140px;height:90px;object-fit:cover;border-radius:12px;background:#e7eef2}.stop-image.contain{object-fit:contain}.num{width:42px;height:42px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(145deg,var(--navy),var(--blue));color:#fff;font-weight:850}.stop h3{font-size:1rem;margin:0 0 3px}.stop p{color:var(--muted);font-size:.91rem;margin:0}.stop-description-list{list-style:none;display:grid;gap:7px;margin:10px 0 0;padding:0 0 0 0}.stop-description-list li{position:relative;padding-left:18px;color:var(--muted);font-size:.91rem;line-height:1.65}.tag{display:inline-block;margin-left:6px;padding:2px 8px;border-radius:999px;background:#fff3d8;color:#9a5a00;font-size:.72rem;font-weight:800;vertical-align:2px}.stop-links{display:flex;flex-wrap:wrap;align-items:flex-start;gap:7px}.map,.source-link{display:inline-flex;gap:5px;align-items:center;text-decoration:none;font-size:.84rem;font-weight:800;padding:7px 9px;border-radius:10px;white-space:nowrap}.map{color:var(--blue);background:#eef7ff}.source-link{color:#8b5c10;background:#fff7e8}.arrow{height:12px;margin-left:26px;border-left:2px dashed #96b7c7}
+    .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}.section-card{padding:21px}.section-card h3{margin:0 0 10px}.section-card p{color:var(--muted)}.guide-section{height:100%}.guide-section ul{display:grid;gap:8px;margin:14px 0 0;padding:0;list-style:none}.guide-section li{position:relative;padding-left:20px;color:var(--muted)}.notice{padding:17px 19px;margin:16px 0;border-left:5px solid var(--amber);box-shadow:none;background:#fffaf0}.notice strong{color:#955706}.photo{min-height:220px;border-radius:18px;overflow:hidden;position:relative;background:#b9d2dc;margin:-21px -21px 16px}.photo img{width:100%;height:100%;object-fit:cover;position:absolute}.photo span{position:absolute;left:12px;bottom:12px;color:#fff;background:#062f49c9;border:1px solid #ffffff40;border-radius:10px;padding:6px 9px;font-size:.8rem;font-weight:750}.text-photo{display:grid;place-items:center;background:#e8f4f1;color:var(--accent)}.text-photo-icon{position:static!important;background:none!important;border:0!important;padding:0!important;color:var(--accent)!important;font-size:3.6rem!important;line-height:1}.checklist{display:grid;gap:10px}.check{display:flex;gap:11px;align-items:flex-start;padding:13px;border:1px solid var(--line);border-radius:14px;background:var(--soft);cursor:pointer}.check input{width:20px;height:20px;accent-color:var(--teal);margin-top:2px}.check:has(input:checked){opacity:.58;text-decoration:line-through}.link-list{display:grid;gap:9px}.reference-link{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:var(--soft);color:var(--blue);font-weight:750;text-decoration:none}.reference-link span:last-child{font-size:.82rem;color:var(--muted);white-space:nowrap}
+    .back-home{display:inline-flex;align-items:center;gap:6px;margin-bottom:14px;padding:8px 14px;border:1px solid rgba(255,255,255,.55);border-radius:999px;background:rgba(255,255,255,.14);color:#fff;font-size:.88rem;font-weight:800;text-decoration:none;backdrop-filter:blur(8px)}.back-home:hover{background:rgba(255,255,255,.26)}.bottom-nav{position:fixed;right:0;bottom:0;left:0;z-index:30;background:#ffffffed;border-top:1px solid var(--line);backdrop-filter:blur(16px);padding-bottom:var(--safe)}.bottom-tabs{display:flex;align-items:center;justify-content:center;max-width:720px;margin:auto;padding:7px}.bottom-tabs .tab,.bottom-tabs .home-link{display:grid;gap:1px;place-items:center;font-size:.73rem;padding:6px 10px;border-radius:12px}.bottom-tabs .home-link{text-decoration:none;color:#075fae;background:#edf6ff;font-weight:750}.bottom-plan-tabs{display:flex;justify-content:space-around;flex:1}.bottom-tabs .icon{font-size:1.2rem}
+    @media(max-width:700px){.wrap{width:min(1080px,calc(100% - 20px))}.hero{min-height:390px;padding:60px 0 42px}.intro{grid-template-columns:1fr}.metric{text-align:left}.route-overview{padding:17px}.timeline{margin-right:-17px;padding-right:17px}.timeline-stop{min-width:116px}.facts{grid-template-columns:1fr}.stop{grid-template-columns:1fr;grid-template-areas:"num" "content" "links" "image";gap:10px;padding:14px}.stop>.num{grid-area:num}.stop-image{width:100%;height:clamp(150px,48vw,230px);grid-area:image;object-fit:cover}.stop>div:nth-of-type(2){grid-area:content;min-width:0}.stop>.stop-links{grid-area:links}.stop-links .map,.stop-links .source-link{width:auto;justify-content:flex-start}.arrow{margin-left:20px}.grid{grid-template-columns:1fr}.photo{margin:-17px -17px 16px}.tabs .tab{padding:9px 11px}.section-card{padding:17px}.reference-link{align-items:flex-start;flex-direction:column;gap:3px}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+    .stop-description-list li,.guide-section li{position:relative;padding-left:30px}
+    .item-symbol{position:absolute;top:0;left:0;display:inline-flex;width:24px;height:1.65em;align-items:center;justify-content:center;color:var(--accent);font-weight:900;line-height:1;font-family:"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif}
+  </style>
+</head>
+<body>
+<header class="hero"><div class="wrap"><a class="back-home" href="index.html" aria-label="返回首頁">← 返回首頁</a><span class="eyebrow">🧭 TRAVEL TEMPLATE · 可重複使用</span><h1>旅行規劃模板</h1><p>把每日行程、景點介紹與主題內容拆成獨立 Tab；只要複製資料物件，就能延伸成不同目的地的完整旅行頁面。</p><div class="hero-meta"><span class="pill">📅 每日行程</span><span class="pill">📍 大景點介紹</span></div></div></header>
+<nav class="sticky-tabs"><div class="wrap tabs" id="topTabs"></div></nav>
+<main class="wrap main" id="planContainer"></main>
+<nav class="bottom-nav"><div class="bottom-tabs"><a class="home-link" href="index.html" aria-label="返回首頁"><span class="icon">⌂</span><span>首頁</span></a><div class="bottom-plan-tabs" id="bottomTabs"></div></div></nav>
+<script>
+const topTabs=document.getElementById('topTabs');
+const bottomTabs=document.getElementById('bottomTabs');
+const planContainer=document.getElementById('planContainer');
+const maps=query=>`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
+const placeholder=(text,index)=>`https://placehold.co/640x360/e7eef2/5d6c7d?text=${encodeURIComponent(text+' '+index)}`;
+const imageSources={
+  hero:'https://images.unsplash.com/photo-1527668752968-14dc70a27c95?auto=format&fit=crop&w=1800&q=85',
+  '行程一代表景色':'https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=85',
+  '行程二核心體驗':'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=85',
+  '景點主視覺':'https://images.unsplash.com/photo-1527668752968-14dc70a27c95?auto=format&fit=crop&w=1200&q=80',
+  '主題內容照片':'https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=1200&q=85'
+};
+const imageURL=(name,index)=>imageSources[name]||placeholder(name,index);
+
+const travelNameCatalog=[
+  '大三巴牌坊','澳門塔','威尼斯人','威尼斯人度假村','葡京酒店','金沙城中心','議事亭前地',
+];
+const travelNamePattern=new RegExp(`(${travelNameCatalog.map(value => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).sort((a,b)=>b.length-a.length).join('|')})`, 'gi');
+
+function boldTravelTerms(text) {
+  if (!text || typeof text !== 'string') return text;
+  return text
+    .split(/(<[^>]+>)/g)
+    .map(part => {
+      if (part.startsWith('<') && part.endsWith('>')) return part;
+      return part.replace(travelNamePattern, '<strong>$1</strong>');
+    })
+    .join('');
+}
+
+document.documentElement.style.setProperty('--hero-image',`url("${imageSources.hero}")`);
+
+const travelData={tabs:[
+  {
+    id:'day1',type:'route',label:'行程一',icon:'🌤️',title:'行程一｜抵達與城市入門',
+    accent:'#075fae',subtitle:'把抵達、入住與第一組城市地標排在同一條順路動線中。',metric:'約 6 小時',
+    notice:'行程一通常有交通與入住等固定時間，先安排不可延後的項目，再填入可彈性調整的景點。',
+    overview:{route:'✈️ 交通起點 → 🏨 住宿寄放行李 → 📍 城市地標 → 🍽️ 晚餐 → 🌃 夜景',chips:['抵達日','步行串聯','保留入住緩衝'],timeline:[{name:'交通起點',note:'確認班次'},{name:'住宿地點',note:'寄放行李',mode:'🏨'},{name:'城市地標',note:'下午主行程',mode:'🚶'},{name:'晚餐與夜景',note:'晚上安排',mode:'🌃'}]},
+    stops:[
+      {name:'交通起點',description:'✈️ 07:45 抵達機場，安檢與登機大約要一個小時；出關後我們先買了一瓶水和小點心，再往接駁站排隊。<br>✈️ 這班航班約 09:00 起飛，落地後會先去辦理接駁與寄放行李<br>🚌 出機場後往右走就能看見接駁車候車區，整體行程通常不會太趕',map:'你的機場或車站',tag:'固定時間'},
+      {name:'住宿地點',description:'🧳 抵達飯店後先把行李放下，整理一下身體和換裝；這樣下午逛街時就不會太累。<br>🏨 很多時候房間要 15:00 之後才會準備好<br>🏨 如果提早到，可以直接在大廳休息、喝咖啡，先緩衝一下時間',map:'你的住宿名稱',tag:'先處理'},
+      {name:'城市地標',description:'🏛️ 下午先從最有代表性的景點開始，一邊走一邊拍照，這樣最有旅行感。<br>✦ 這一段適合慢慢逛，不需要安排過多景點<br>📷 我們通常先拍全景照，再根據當天天氣和人流調整慢遊路線',map:'你的第一個景點',tag:'主要景點'},
+      {name:'晚餐與夜景',description:'🍽️ 晚餐我們會選在景點周邊，吃完再慢慢走回飯店，這樣晚上很舒服。<br>🌃 夜景最適合在天色暗下來後拍，光線和街景會更有氛圍<br>🛁 若體力不夠，也可以直接回飯店泡澡，明天會更輕鬆',map:'你的晚餐地點',tag:'可彈性'}
+    ],
+    highlights:[
+      {title:'行程一代表景色',description:'替換成行程一最值得拍攝的城市、街區或地標照片。'},
+    ],
+    checks:['確認抵達時間與交通班次','確認住宿寄放行李或入住規則','查好第一個景點的開放時間','保留晚餐前的交通緩衝']
+  },
+  {
+    id:'day2',type:'route',label:'行程二',icon:'☀️',title:'行程二｜主題景點一日行程',
+    accent:'#078577',subtitle:'把最想看的大景點集中在完整的一天，並預留回程與休息時間。',metric:'約 8～10 小時',
+    notice:'行程二適合安排距離較遠或需要預約的內容；先確認最早入場與最晚回程時間。',
+    overview:{route:'🏨 住宿出發 → 🚆 主要交通節點 → 🏛️ 主題景點 → 🍴 午餐 → 🌅 傍晚備案 → 返回住宿',chips:['完整一日','先預約再排細節','預留回程'],timeline:[{name:'住宿出發',note:'提早出發'},{name:'交通節點',note:'確認轉乘',mode:'🚆'},{name:'主題景點',note:'核心停留',mode:'🏛️'},{name:'傍晚備案',note:'視體力安排',mode:'🌅'}]},
+    stops:[
+      {name:'住宿出發',description:'☕ 今天一早會提早起床，先吃個簡單早餐再出發，因為路線比較長，早出發會比較輕鬆。<br>☕ 早餐不必太重，重點是保留體力和時間<br>🏛️ 我們會先把今天要去的景點和大概走路時間記在手機上',map:'你的住宿名稱',tag:'早出發'},
+      {name:'主要交通節點',description:'🚆 今天的轉乘點最重要，因為景點距離較遠，路上可能會遇到交通延誤。<br>🚌 這時候最怕的是忽略末班車或接駁時間<br>⏱️ 如果一切順暢，最好提前預留 10～15 分鐘緩衝，不用太緊張',map:'你的轉乘地點',tag:'先查班次'},
+      {name:'主題景點',description:'🏛️ 這一站通常是今天的主軸，我們會先看地圖和開放時間，決定先拍哪裡、先吃哪裡。<br>✦ 這裡最值得花時間的通常不是排隊，而是慢慢走進每個區域<br>🏛️ 若有熱門景點，建議提前看官方資訊與預約方式',map:'你的大景點名稱',tag:'需預約',source:{label:'官方預約頁',url:'https://example.com/reservation'}},
+      {name:'傍晚備案',description:'🌃 如果今天進展順利，我們會在傍晚找附近的咖啡店或商場休息一下，順便補拍照片。<br>🛍️ 這時候最適合逛小店、買伴手禮或喝一杯咖啡<br>🛋️ 若體力不夠，也可以直接回飯店，這樣明天會更舒服',map:'你的備案地點',tag:'彈性安排'}
+    ],
+    highlights:[
+      {title:'行程二核心體驗',description:'放入此日最具代表性的景觀、活動或體驗照片。'},
+    ],
+    checks:['確認核心景點是否需要預約或購票','查詢去回程與末班交通','準備雨天或提早結束的備案','反推最晚離開景點的時間']
+  },
+  {
+    id:'landmark',type:'guide',label:'XXX',icon:'🏛️',title:'<填入景點名稱>',
+    accent:'#9a5a00',subtitle:'<這個 Tab 不放固定行程，而是集中整理一個大景點的背景、玩法與實用資訊。>',metric:'景點專題',
+    notice:'景點介紹頁可獨立被不同日期引用；票價、營業時間與限定活動請放上更新日期或官方連結。',
+    facts:[{label:'建議停留',value:'2～4 小時'},{label:'適合時段',value:'上午／傍晚'},{label:'內容類型',value:'景點介紹'}],
+    sections:[
+      {title:'先認識這個景點',description:'用一小段文字交代景點特色、歷史背景或為什麼值得安排。',items:['🚆 填寫景點所在區域與交通位置','🏛️ 整理最具代表性的建築、展區或自然景觀','👥 補充適合哪些旅伴或旅行風格']},
+      {title:'建議玩法與參觀順序',description:'把複雜景點拆成幾個容易理解的參觀區塊。',items:['🎫 入口／售票或預約方式','⏱️ 必看區域與建議停留時間','🌧️ 可略過、雨天或人多時的替代路線']},
+      {title:'實用資訊',description:'集中放置會影響實際體驗的細節，避免散落在每日行程裡。',items:['🎫 開放時間、票價與官方公告','🚻 廁所、寄物、餐飲與休息位置','📷 拍照限制、穿著要求或無障礙資訊']}
+    ],
+    highlights:[
+      {title:'景點主視覺',description:'放入能一眼辨識這個景點的照片。'},
+    ],
+    links:[{label:'景點官方網站',url:'https://example.com/official-attraction'}],
+    checks:['補上官方開放時間與票價','確認是否需要預約或身分證件','標記入口、廁所與休息位置','確認最近交通與回程方式']
+  },
+  {
+    id:'topic',type:'guide',label:'XXX',icon:'🍜',title:'旅遊內容｜美食、購物與實用資訊',
+    accent:'#b45309',subtitle:'<用主題型 Tab 收納不屬於單一天的內容，讓每日行程保持簡潔又不遺漏細節。>',metric:'主題整理',
+    notice:'主題內容適合整理美食、購物、住宿比較、交通攻略或雨天備案；每個主題不要塞入太多不相關資訊。',
+    facts:[{label:'適用範圍',value:'全旅程'},{label:'更新方式',value:'出發前確認'},{label:'內容類型',value:'主題指南'}],
+    sections:[
+      {title:'美食清單',description:'把想吃的店依區域或餐次整理，實際行程只需引用店名。',items:['☕ 早餐／午餐／晚餐候選','🍽️ 必點菜色與預算範圍','🍽️ 是否需要訂位、排隊或外帶']},
+      {title:'購物與伴手禮',description:'補充商場、街區與採買目標，避免每天重複說明。',items:['🛍️ 想買的商品與適合購買的區域','💳 營業時間與退稅或付款提醒','🧳 行李容量與最後採買日']},
+      {title:'全程備案',description:'整理天氣、體力或交通異常時可以直接替換的方案。',items:['🌧️ 雨天室內景點','⏱️ 提早結束時的附近活動','✈️ 航班、車次或接駁延誤時的聯絡資訊']}
+    ],
+    highlights:[
+      {title:'主題內容照片',description:'可以放美食、街景、購物區或交通工具的代表照片。'},
+    ],
+    links:[{label:'官方旅遊資訊',url:'https://example.com/travel-info'},{label:'地圖收藏清單',url:'https://www.google.com/maps'}],
+    checks:['按區域整理餐廳與購物點','補上預算、訂位與營業時間','建立雨天與交通異常備案','出發前重新確認官方資訊']
+  }
+]};
+
+function header(plan) {
+  return `
+    <section class="intro">
+      <div>
+        <div class="kicker">${plan.type === 'guide' ? 'Guide Content' : 'Daily Route'}</div>
+        <h2>${boldTravelTerms(plan.title)}</h2>
+        <p>${boldTravelTerms(plan.subtitle)}</p>
+      </div>
+      <div class="metric">
+        <strong>${plan.metric}</strong>
+        <span>${plan.type === 'guide' ? '重點' : '建議安排'}</span>
+      </div>
+    </section>
+  `;
+}
+
+function sourceHTML(source) {
+  return source
+    ? `<a class="source-link" target="_blank" rel="noopener" href="${source.url}">${source.label} ↗</a>`
+    : '';
+}
+
+function cleanItemText(text) {
+  return text.trim().replace(/^[^\p{L}\p{N}\s]+/u, '').trim();
+}
+
+function itemHTML(text) {
+  const trimmedText = text.trim();
+  const symbolMatch = trimmedText.match(/^[^\p{L}\p{N}\s]+/u);
+  const symbol = symbolMatch ? symbolMatch[0] : '✦';
+  const cleanText = boldTravelTerms(cleanItemText(trimmedText));
+  return `<li><span class="item-symbol" aria-hidden="true">${symbol}</span>${cleanText}</li>`;
+}
+
+function stopHTML(stop, index) {
+  const image = stop.image || imageURL(stop.name, index + 1);
+  const fit = stop.imageFit === 'contain' ? ' contain' : '';
+
+  const bulletText = stop.description.includes('<br>')
+    ? stop.description
+        .split('<br>')
+        .map(part => part.trim())
+        .filter(Boolean)
+        .map(itemHTML)
+        .join('')
+    : '';
+
+  const descriptionMarkup = bulletText
+    ? `<ul class="stop-description-list">${bulletText}</ul>`
+    : `<p>${stop.description}</p>`;
+
+  return `
+    ${index ? '<div class="arrow"></div>' : ''}
+    <article class="stop">
+      <div class="num">${String(index + 1).padStart(2, '0')}</div>
+      <img class="stop-image${fit}" src="${image}" alt="${stop.name} 圖片" loading="lazy">
+      <div>
+        <h3>${boldTravelTerms(stop.name)}${stop.tag ? `<span class="tag">${stop.tag}</span>` : ''}</h3>
+        ${descriptionMarkup}
+      </div>
+      <div class="stop-links">
+        <a class="map" target="_blank" rel="noopener" href="${maps(stop.map)}">地圖 ↗</a>
+        ${sourceHTML(stop.source)}
+      </div>
+    </article>
+  `;
+}
+
+function highlightHTML(highlight) {
+  const image = highlight.image || imageSources[highlight.title] || '';
+  const media = image
+    ? `<img loading="lazy" src="${image}" alt="${highlight.title}">`
+    : `<span class="text-photo-icon">${highlight.icon || '✦'}</span>`;
+  const photoClass = image ? '' : ' text-photo';
+
+  return `
+    <section class="section-card">
+      <div class="photo${photoClass}">
+        ${media}
+        <span>${boldTravelTerms(highlight.title)}</span>
+      </div>
+      <h3>${boldTravelTerms(highlight.title)}</h3>
+      <p>${boldTravelTerms(highlight.description)}</p>
+    </section>
+  `;
+}
+
+function overviewHTML(plan) {
+  const overview = plan.overview;
+  if (!overview) return '';
+
+  const timeline = overview.timeline.map((stop, index) => `
+    ${index ? `
+      <div class="connector">
+        <b>${stop.mode || '→'}</b>
+        <small>${stop.note || '移動'}</small>
+      </div>
+    ` : ''}
+    <div class="timeline-stop">
+      <span>${stop.name}</span>
+      ${stop.note && !index ? `<small>${stop.note}</small>` : ''}
+    </div>
+  `).join('');
+
+  return `
+    <section class="route-overview" aria-label="路線總覽">
+      <div class="section-heading overview-heading">
+        <h2>路線總覽</h2>
+        <p>先掌握整體方向，再查看下方的停靠點細節。</p>
+      </div>
+      <div class="chips">
+        ${overview.chips.map(chip => `<span class="chip">${chip}</span>`).join('')}
+      </div>
+      <div class="timeline" aria-label="推薦玩法時間軸">${timeline}</div>
+    </section>
+  `;
+}
+
+function factsHTML(plan) {
+  if (!plan.facts?.length) return '';
+
+  return `
+    <section class="route-overview" aria-label="內容摘要">
+      <div class="section-heading overview-heading">
+        <h2>可填內容摘要</h2>
+        <p>快速交代這個介紹 Tab 的用途。</p>
+      </div>
+      <div class="facts">
+        ${plan.facts.map(fact => `
+          <div class="fact">
+            <strong>${boldTravelTerms(fact.value)}</strong>
+            <span>${boldTravelTerms(fact.label)}</span>
+          </div>
+        `).join('')}
+      </div>
+    </section>
+  `;
+}
+
+function guideSectionsHTML(plan) {
+  return `
+    <div class="section-heading">
+      <h2>重點內容</h2>
+    </div>
+    <div class="grid">
+      ${plan.sections.map(section => `
+        <section class="section-card guide-section">
+          <h3>${boldTravelTerms(section.title)}</h3>
+          <p>${boldTravelTerms(section.description)}</p>
+          <ul>
+            ${section.items.map(itemHTML).join('')}
+          </ul>
+        </section>
+      `).join('')}
+    </div>
+  `;
+}
+
+function linksHTML(plan) {
+  if (!plan.links?.length) return '';
+
+  return `
+    <div class="section-heading">
+      <h2>參考連結</h2>
+      <p>放置官方網站、預約頁面、地圖收藏或其他需要再次查閱的資料。</p>
+    </div>
+    <section class="section-card">
+      <div class="link-list">
+        ${plan.links.map(link => `
+          <a class="reference-link" target="_blank" rel="noopener" href="${link.url}">
+            <span>${boldTravelTerms(link.label)}</span>
+            <span>開啟連結 ↗</span>
+          </a>
+        `).join('')}
+      </div>
+    </section>
+  `;
+}
+
+function checklistHTML(plan, title, description) {
+  return `
+    <div class="section-heading">
+      <h2>${title}</h2>
+      <p>${boldTravelTerms(description)}</p>
+    </div>
+    <section class="section-card">
+      <div class="checklist">
+        ${plan.checks.map((check, index) => `
+          <label class="check">
+            <input type="checkbox" data-key="${plan.id}-${index}">
+            <span>${boldTravelTerms(check)}</span>
+          </label>
+        `).join('')}
+      </div>
+    </section>
+  `;
+}
+
+function renderRoutePlan(plan) {
+  return `
+    <section class="plan" id="${plan.id}" style="--accent:${plan.accent || 'var(--blue)'}">
+      ${header(plan)}
+      <div class="notice"><strong>行程提醒：</strong>${plan.notice}</div>
+      ${overviewHTML(plan)}
+      <div class="section-heading">
+        <h2>行程路線</h2>
+        <p>依順序列出本次行程的主要停靠點。</p>
+      </div>
+      <div class="route">${plan.stops.map(stopHTML).join('')}</div>
+      <div class="section-heading">
+        <h2>特色照片與重點</h2>
+        <p>補充這套行程最具代表性的景觀或體驗。</p>
+      </div>
+      <div class="grid">${plan.highlights.map(highlightHTML).join('')}</div>
+      ${linksHTML(plan)}
+      ${checklistHTML(plan, 'Checklist', 'Checklist 狀態會保存在目前瀏覽器。')}
+    </section>
+  `;
+}
+
+function renderGuidePlan(plan) {
+  return `
+    <section class="plan" id="${plan.id}" style="--accent:${plan.accent || 'var(--blue)'}">
+      ${header(plan)}
+      ${factsHTML(plan)}
+      ${guideSectionsHTML(plan)}
+      <div class="section-heading">
+        <h2>特色照片與重點</h2>
+        <p>最具代表性的景觀或體驗。</p>
+      </div>
+      <div class="grid">${plan.highlights.map(highlightHTML).join('')}</div>
+      ${linksHTML(plan)}
+      ${checklistHTML(plan, 'Checklist', '請在這裡填寫旅遊提醒、觀光重點或確認事項。')}
+    </section>
+  `;
+}
+
+function renderPlan(plan) {
+  return plan.type === 'guide' ? renderGuidePlan(plan) : renderRoutePlan(plan);
+}
+
+function renderPlans() {
+  planContainer.innerHTML = travelData.tabs.map(renderPlan).join('');
+  restoreChecks();
+}
+
+function renderTabs() {
+  const tabs = travelData.tabs.map(plan => `
+    <button class="tab" data-target="${plan.id}">
+      <span class="icon">${plan.icon}</span>
+      <span>${plan.label}</span>
+    </button>
+  `).join('');
+
+  topTabs.innerHTML = tabs;
+  bottomTabs.innerHTML = tabs;
+}
+
+function showPlan(id, updateHash = true, shouldScroll = true) {
+  document.querySelectorAll('.plan').forEach(plan => {
+    plan.classList.toggle('active', plan.id === id);
+  });
+  document.querySelectorAll('[data-target]').forEach(tab => {
+    tab.classList.toggle('active', tab.dataset.target === id);
+  });
+
+  if (updateHash) history.replaceState(null, '', `#${id}`);
+  if (shouldScroll) {
+    const main = document.getElementById('planContainer');
+    const sticky = document.querySelector('.sticky-tabs');
+    const targetY = main ? main.offsetTop - (sticky ? sticky.offsetHeight : 0) - 12 : 0;
+    window.scrollTo({
+      top: Math.max(targetY, 0),
+      left: 0,
+      behavior: 'smooth'
+    });
+  }
+}
+
+function restoreChecks() {
+  document.querySelectorAll('[data-key]').forEach(checkbox => {
+    const key = `travel-template-${checkbox.dataset.key}`;
+    checkbox.checked = localStorage.getItem(key) === '1';
+    checkbox.onchange = () => {
+      localStorage.setItem(key, checkbox.checked ? '1' : '0');
+    };
+  });
+}
+
+renderTabs();
+renderPlans();
+
+document.addEventListener('click', event => {
+  const tab = event.target.closest('[data-target]');
+  if (tab) showPlan(tab.dataset.target);
+});
+
+const planIds = travelData.tabs.map(plan => plan.id);
+const initialPlan = planIds.includes(location.hash.slice(1))
+  ? location.hash.slice(1)
+  : planIds[0];
+
+showPlan(initialPlan, false, false);
+
+window.addEventListener('hashchange', () => {
+  const id = location.hash.slice(1);
+  if (planIds.includes(id)) showPlan(id, false, false);
+});
+</script>
+</body>
+</html>
