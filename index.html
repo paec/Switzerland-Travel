@@ -5,43 +5,135 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>瑞士旅遊景點導覽</title>
     <style>
+        :root {
+            --page-gutter: clamp(1rem, 3vw, 3rem);
+            --surface-color: #ffffff;
+            --page-color: #f4f7f6;
+            --heading-color: #2c3e50;
+            --muted-color: #7f8c8d;
+            --border-color: #dce6e3;
+        }
+        * {
+            box-sizing: border-box;
+        }
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f4f7f6;
+            background-color: var(--page-color);
             color: #333;
             margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            padding: var(--page-gutter);
             min-height: 100vh;
         }
         .container {
             text-align: center;
-            background: white;
-            padding: 2.5rem;
+            background: var(--surface-color);
+            padding: clamp(1.25rem, 4vw, 2.5rem);
             border-radius: 12px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            max-width: 400px;
-            width: 90%;
+            max-width: 1400px;
+            width: 100%;
+            margin: 0 auto;
         }
         h1 {
-            color: #2c3e50;
+            color: var(--heading-color);
             margin-bottom: 0.5rem;
             font-size: 1.8rem;
         }
         p {
-            color: #7f8c8d;
+            color: var(--muted-color);
             margin-bottom: 2rem;
         }
         .menu-list {
             list-style: none;
             padding: 0;
             margin: 0;
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1rem;
         }
         .menu-item {
-            margin-bottom: 1rem;
+            margin: 0;
         }
+        .trip-plan {
+            margin: 1.5rem 0 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #e1e8e6;
+        }
+        .section-title {
+            color: var(--heading-color);
+            margin: 0 0 0.75rem;
+            font-size: 1.15rem;
+        }
+        .btn-itinerary {
+            background-color: #e67e22;
+            box-shadow: 0 2px 5px rgba(230, 126, 34, 0.3);
+        }
+        .btn-itinerary:hover {
+            background-color: #d35400;
+            box-shadow: 0 4px 10px rgba(230, 126, 34, 0.4);
+        }
+        .overview-block {
+            width: 100%;
+            margin: 2.5rem 0 2rem;
+            padding: clamp(1rem, 2vw, 1.5rem);
+            border: 2px dashed #b8c7c3;
+            border-radius: 8px;
+            background-color: #f8fbfa;
+            text-align: left;
+        }
+        .overview-block .section-title {
+            text-align: center;
+        }
+        .overview-table-wrap {
+            overflow-x: auto;
+            margin: 0;
+        }
+        .overview-table {
+            width: 100%;
+            min-width: 900px;
+            border-collapse: collapse;
+            table-layout: fixed;
+            background-color: white;
+            color: #34495e;
+            font-size: 1rem;
+        }
+        .overview-table th,
+        .overview-table td {
+            padding: 0.8rem 0.75rem;
+            border: 1px solid var(--border-color);
+            vertical-align: top;
+        }
+        .overview-table th {
+            background-color: #2c3e50;
+            color: white;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+        .overview-table .date-cell {
+            font-weight: bold;
+            white-space: nowrap;
+        }
+        .overview-table .date-highlight {
+            background-color: #f2f700;
+            color: #273300;
+        }
+        .overview-table .weekday-cell,
+        .overview-table .status-cell {
+            text-align: center;
+            white-space: nowrap;
+        }
+        .overview-table .flight-cost {
+            background-color: #f1c40f;
+            color: #4d3a00;
+            font-weight: bold;
+            white-space: normal;
+        }
+        .column-date { width: 10%; }
+        .column-weekday { width: 7%; }
+        .column-status { width: 7%; }
+        .column-city { width: 15%; }
+        .column-note { width: 41%; }
+        .column-reminder { width: 20%; }
         .btn {
             display: block;
             padding: 12px 20px;
@@ -66,6 +158,11 @@
             background-color: #27ae60;
             box-shadow: 0 4px 10px rgba(46, 204, 113, 0.4);
         }
+        @media (max-width: 720px) {
+            .menu-list {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body>
@@ -73,7 +170,7 @@
     <div class="container">
         <h1>瑞士景點導覽</h1>
         <p>請選擇您想瀏覽的景點頁面：</p>
-        
+
         <ul class="menu-list">
             <li class="menu-item">
                 <a href="Luzern.html" class="btn">🇨🇭 Luzern (琉森)</a>
@@ -85,7 +182,80 @@
                 <a href="Zurich.html" class="btn">🇨🇭 Zurich (蘇黎世)</a>
             </li>
         </ul>
+
+        <section class="trip-plan">
+            <h2 class="section-title">整趟行程安排</h2>
+            <a href="https://onedrive.live.com/personal/0a54a94ef85f8f9b/_layouts/15/doc.aspx?resid=787090bc-0b1d-49aa-bca4-9d409154f35c&amp;cid=0a54a94ef85f8f9b" class="btn btn-itinerary" target="_blank" rel="noopener noreferrer">📅 日期與城市安排表</a>
+        </section>
+
+        <section class="overview-block">
+            <h2 class="section-title">總行程概覽流程</h2>
+            <div class="overview-table-wrap">
+                <table class="overview-table">
+                    <colgroup>
+                        <col class="column-date">
+                        <col class="column-weekday">
+                        <col class="column-status">
+                        <col class="column-city">
+                        <col class="column-note">
+                        <col class="column-reminder">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th scope="col">日期</th>
+                            <th scope="col">星期</th>
+                            <th scope="col">狀態</th>
+                            <th scope="col">城市</th>
+                            <th scope="col">行程與備註</th>
+                            <th scope="col">費用／提醒</th>
+                        </tr>
+                    </thead>
+                    <tbody id="itinerary-rows"></tbody>
+                </table>
+            </div>
+        </section>
+
     </div>
+
+    <script>
+        const itinerary = [
+            { date: '6月9日', weekday: '三', status: '端', city: '台灣', note: '晚上出發', reminder: '機票3.3～3.7W／人', highlighted: false, reminderClass: 'flight-cost' },
+            { date: '6月10日', weekday: '四', status: '請', city: '蘇黎世', note: '早上 6-10 點到', highlighted: true },
+            { date: '6月11日', weekday: '五', status: '請', city: '琉森', note: '搭黃金列車往格林德瓦，預約座位&升一等艙', highlighted: true },
+            { date: '6月12日', weekday: '六', status: 'X', city: '格林德瓦', note: '若有時間可+瀑布鎮', highlighted: true },
+            { date: '6月13日', weekday: '日', status: 'X', city: '因特拉肯', note: '西湖', highlighted: true },
+            { date: '6月14日', weekday: '一', status: '請', city: '因特拉肯', note: '東湖 + 伯恩', highlighted: true },
+            { date: '6月15日', weekday: '二', status: '請', city: '因特拉肯', note: '市區 + 瀑布鎮', highlighted: true },
+            { date: '6月16日', weekday: '三', status: '請', city: '維也納', highlighted: true },
+            { date: '6月17日', weekday: '四', status: '請', city: '維也納', highlighted: true },
+            { date: '6月18日', weekday: '五', status: '請', city: '維也納', highlighted: true },
+            { date: '6月19日', weekday: '六', status: 'X', city: '維也納', note: '飛機班次：早上 10 點後出發、有的可以晚上出發', highlighted: true },
+            { date: '6月20日', weekday: '日', status: 'X', city: '台灣', note: '早上、下午、晚上到都有可能' }
+        ];
+
+        const tableBody = document.querySelector('#itinerary-rows');
+
+        const createCell = (value, className = '') => {
+            const cell = document.createElement('td');
+            cell.className = className;
+            cell.textContent = value || '';
+            return cell;
+        };
+
+        itinerary.forEach((day) => {
+            const highlightClass = day.highlighted ? ' date-highlight' : '';
+            const row = document.createElement('tr');
+            row.append(
+                createCell(day.date, `date-cell${highlightClass}`),
+                createCell(day.weekday, `weekday-cell${highlightClass}`),
+                createCell(day.status, 'status-cell'),
+                createCell(day.city),
+                createCell(day.note),
+                createCell(day.reminder, day.reminderClass || '')
+            );
+            tableBody.append(row);
+        });
+    </script>
 
 </body>
 </html>
