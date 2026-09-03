@@ -1,0 +1,494 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#075985">
+  <title>因特拉肯市區｜行程與景點分頁</title>
+  <style>
+    :root{--navy:#073763;--blue:#075fae;--teal:#078577;--ink:#10243e;--muted:#607184;--bg:#edf5f8;--card:#fff;--line:#d7e5ed;--soft:#f5fafc;--amber:#d97706;--shadow:0 10px 30px rgba(17,54,76,.12);--radius:20px;--safe:env(safe-area-inset-bottom,0px)}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);background:linear-gradient(180deg,#e7f3f7 0,#f7fafb 36rem);font-family:system-ui,-apple-system,"Segoe UI","Noto Sans TC",sans-serif;line-height:1.65}img{display:block;max-width:100%}button,a{font:inherit}a{color:inherit}.wrap{width:min(1080px,calc(100% - 28px));margin:auto}
+    .hero{min-height:440px;color:#fff;background-color:#075985;background-image:linear-gradient(112deg,rgba(3,39,78,.96),rgba(5,123,139,.76)),var(--hero-image);background-position:center;background-size:cover;display:flex;align-items:end;padding:78px 0 62px}.eyebrow{display:inline-flex;gap:8px;align-items:center;padding:7px 12px;border:1px solid #ffffff55;border-radius:999px;background:#ffffff18;backdrop-filter:blur(8px);font-size:.88rem;font-weight:700}.hero h1{font-size:clamp(2.7rem,8vw,5.6rem);line-height:1;margin:18px 0 14px;letter-spacing:-.04em}.hero p{max-width:760px;margin:0;color:#e5f6fa;font-size:clamp(1rem,2.4vw,1.22rem)}.notes-link{display:inline-flex;align-items:center;margin-top:18px;padding:10px 14px;border:1px solid rgba(255,255,255,.5);border-radius:11px;background:rgba(255,255,255,.14);color:#fff;font-size:.92rem;font-weight:800;line-height:1.35;text-decoration:none;backdrop-filter:blur(8px)}.notes-link:hover{background:rgba(255,255,255,.24)}.hero-meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}.pill{padding:8px 12px;background:#ffffff18;border:1px solid #ffffff35;border-radius:12px;font-size:.9rem}
+    .sticky-tabs{position:sticky;top:0;z-index:20;background:#ffffffee;border-bottom:1px solid var(--line);backdrop-filter:blur(14px)}.tabs{display:flex;gap:6px;overflow:auto;padding:10px 0;scrollbar-width:none}.tab{white-space:nowrap;border:0;background:transparent;color:var(--muted);padding:10px 14px;border-radius:12px;font-weight:750;cursor:pointer}.tab.active{color:#fff;background:var(--navy);box-shadow:0 6px 18px #07376335}.main{padding:28px 0 calc(105px + var(--safe))}.main strong{color:#071923}.plan{display:none;animation:rise .35s ease}.plan.active{display:block}@keyframes rise{from{opacity:0;transform:translateY(8px)}}
+    .intro,.route-overview,.section-card,.notice{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}.intro{padding:24px;margin-bottom:18px;display:grid;grid-template-columns:1fr auto;gap:18px;align-items:center}.kicker{color:var(--teal);font-size:.83rem;font-weight:850;letter-spacing:.12em;text-transform:uppercase}.intro h2,.section-title{margin:4px 0 5px;line-height:1.2}.intro p{margin:0;color:var(--muted)}.metric{min-width:128px;text-align:center;background:#edf8f6;border-radius:16px;padding:14px}.metric strong{display:block;font-size:1.45rem;color:var(--teal)}
+    .section-heading{margin:28px 0 12px}.section-heading h2{margin:0;font-size:1.35rem}.section-heading p{margin:3px 0 0;color:var(--muted)}
+    .route-overview{padding:21px;border-top:5px solid var(--accent);margin-bottom:22px}.overview-heading{margin:0 0 12px}.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}.chip{background:color-mix(in srgb,var(--accent) 10%,white);color:var(--accent);padding:7px 10px;border-radius:999px;font-size:.82rem;font-weight:800}.timeline{display:flex;align-items:center;overflow-x:auto;gap:0;padding:18px 2px 5px;scroll-snap-type:x proximity;scrollbar-width:thin}.timeline-stop{min-width:126px;flex:0 0 126px;text-align:center;scroll-snap-align:start}.timeline-stop span{display:block;background:#fff;border:1px solid color-mix(in srgb,var(--accent) 35%,white);border-radius:12px;padding:10px 7px;font-weight:850}.timeline-stop small{display:block;margin-top:5px;color:var(--muted);font-size:.78rem;white-space:normal;line-height:1.35}.connector{min-width:96px;flex:0 0 96px;text-align:center;color:var(--accent);font-weight:900}.connector b{display:block;font-size:22px;line-height:1}.connector small{display:block;margin-top:4px;font-size:.75rem;white-space:normal;line-height:1.35;overflow-wrap:anywhere}
+    .facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.fact{padding:14px;border:1px solid var(--line);border-radius:14px;background:var(--soft)}.fact strong{display:block;color:var(--accent);font-size:1.12rem;line-height:1.35}.fact span{display:block;margin-top:4px;color:var(--muted);font-size:.82rem}
+    .route{display:grid;gap:12px}.stop{display:grid;grid-template-columns:54px 140px 1fr auto;gap:14px;align-items:start;padding:16px 17px;background:var(--card);border:1px solid var(--line);border-radius:17px;box-shadow:0 5px 20px rgba(17,54,76,.07)}.stop-image{width:140px;height:90px;object-fit:cover;border-radius:12px;background:#e7eef2}.stop-image.contain{object-fit:contain}.num{width:42px;height:42px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(145deg,var(--navy),var(--blue));color:#fff;font-weight:850}.stop h3{font-size:1rem;margin:0 0 3px}.stop p{color:var(--muted);font-size:.91rem;margin:0}.stop-description-list{list-style:none;display:grid;gap:7px;margin:10px 0 0;padding:0}.stop-description-list li{position:relative;padding-left:30px;color:var(--muted);font-size:.91rem;line-height:1.65}.tag{display:inline-block;margin-left:6px;padding:2px 8px;border-radius:999px;background:#fff3d8;color:#9a5a00;font-size:.72rem;font-weight:800;vertical-align:2px}.stop-links{display:flex;flex-wrap:wrap;align-items:flex-start;gap:7px}.map,.source-link{display:inline-flex;gap:5px;align-items:center;text-decoration:none;font-size:.84rem;font-weight:800;padding:7px 9px;border-radius:10px;white-space:nowrap}.map{color:var(--blue);background:#eef7ff}.source-link{color:#8b5c10;background:#fff7e8}.arrow{height:12px;margin-left:26px;border-left:2px dashed #96b7c7}
+    .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}.section-card{padding:21px}.section-card h3{margin:0 0 10px}.section-card p{color:var(--muted)}.guide-section{height:100%}.guide-section ul{display:grid;gap:8px;margin:14px 0 0;padding:0;list-style:none}.guide-section li{position:relative;padding-left:30px;color:var(--muted)}.notice{padding:17px 19px;margin:16px 0;border-left:5px solid var(--amber);box-shadow:none;background:#fffaf0}.notice strong{color:#955706}.photo{min-height:220px;border-radius:18px;overflow:hidden;position:relative;background:#b9d2dc;margin:-21px -21px 16px}.photo img{width:100%;height:100%;object-fit:cover;position:absolute}.photo span{position:absolute;left:12px;bottom:12px;color:#fff;background:#062f49c9;border:1px solid #ffffff40;border-radius:10px;padding:6px 9px;font-size:.8rem;font-weight:750}.text-photo{display:grid;place-items:center;background:#e8f4f1;color:var(--accent)}.text-photo-icon{position:static!important;background:none!important;border:0!important;padding:0!important;color:var(--accent)!important;font-size:3.6rem!important;line-height:1}.checklist{display:grid;gap:10px}.check{display:flex;gap:11px;align-items:flex-start;padding:13px;border:1px solid var(--line);border-radius:14px;background:var(--soft);cursor:pointer}.check input{width:20px;height:20px;accent-color:var(--teal);margin-top:2px}.check:has(input:checked){opacity:.58;text-decoration:line-through}.link-list{display:grid;gap:9px}.reference-link{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:var(--soft);color:var(--blue);font-weight:750;text-decoration:none}.reference-link span:last-child{font-size:.82rem;color:var(--muted);white-space:nowrap}
+    .table-card{overflow:hidden}.table-wrap{overflow-x:auto}.info-table{width:100%;min-width:680px;border-collapse:collapse;font-size:.9rem}.info-table th,.info-table td{padding:12px 13px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}.info-table th{color:var(--ink);background:#edf6f8;font-size:.82rem;white-space:nowrap}.info-table tr:last-child td{border-bottom:0}.info-table td:first-child{font-weight:800;color:var(--blue)}
+    .back-home{display:inline-flex;align-items:center;gap:6px;margin-bottom:14px;padding:8px 14px;border:1px solid rgba(255,255,255,.55);border-radius:999px;background:rgba(255,255,255,.14);color:#fff;font-size:.88rem;font-weight:800;text-decoration:none;backdrop-filter:blur(8px)}.back-home:hover{background:rgba(255,255,255,.26)}.bottom-nav{position:fixed;right:0;bottom:0;left:0;z-index:30;background:#ffffffed;border-top:1px solid var(--line);backdrop-filter:blur(16px);padding-bottom:var(--safe)}.bottom-tabs{display:flex;align-items:center;justify-content:center;max-width:1080px;margin:auto;padding:7px}.bottom-tabs .tab,.bottom-tabs .home-link{display:grid;gap:1px;place-items:center;font-size:.73rem;padding:6px 10px;border-radius:12px}.bottom-tabs .home-link{text-decoration:none;color:#075fae;background:#edf6ff;font-weight:750}.bottom-plan-tabs{display:flex;justify-content:flex-start;flex:1;overflow-x:auto}.bottom-tabs .icon{font-size:1.2rem}
+    @media(max-width:700px){.wrap{width:min(1080px,calc(100% - 20px))}.hero{min-height:390px;padding:60px 0 42px}.intro{grid-template-columns:1fr}.metric{text-align:left}.route-overview{padding:17px}.timeline{margin-right:-17px;padding-right:17px}.timeline-stop{min-width:116px;flex-basis:116px}.connector{min-width:84px;flex-basis:84px}.facts{grid-template-columns:1fr}.stop{grid-template-columns:1fr;grid-template-areas:"num" "content" "links" "image";gap:10px;padding:14px}.stop>.num{grid-area:num}.stop-image{width:100%;height:clamp(150px,48vw,230px);grid-area:image;object-fit:cover}.stop>div:nth-of-type(2){grid-area:content;min-width:0}.stop>.stop-links{grid-area:links}.stop-links .map,.stop-links .source-link{width:auto;justify-content:flex-start}.arrow{margin-left:20px}.grid{grid-template-columns:1fr}.photo{margin:-17px -17px 16px}.tabs .tab{padding:9px 11px}.section-card{padding:17px}.reference-link{align-items:flex-start;flex-direction:column;gap:3px}.info-table{min-width:620px}.bottom-tabs{justify-content:flex-start}.bottom-plan-tabs .tab{flex:0 0 auto}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+    .item-symbol{position:absolute;top:0;left:0;display:inline-flex;width:24px;height:1.65em;align-items:center;justify-content:center;color:var(--accent);font-weight:900;line-height:1;font-family:"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif}
+  </style>
+</head>
+<body>
+<header class="hero"><div class="wrap"><a class="back-home" href="index.html" aria-label="返回首頁">← 返回首頁</a><span class="eyebrow">🏔️ INTERLAKEN TOWN · 瑞士市區筆記</span><h1>因特拉肯市區</h1><p>以西站附近住宿為基地，把市中心必去景點、阿勒河與下森老城、傍晚散步，以及第三天下午的 Harder Kulm 整理成可直接使用的旅行頁面。</p><a class="notes-link" href="https://hackmd.io/_WAqBh3nQl-gpUy6rsnPXQ" target="_blank" rel="noopener noreferrer">📒 開啟完整筆記 ↗</a><div class="hero-meta"><span class="pill">📅 2027/06/13–15</span><span class="pill">🚉 Interlaken West 出發</span><span class="pill">🏔️ 兩湖與少女峰</span></div></div></header>
+<nav class="sticky-tabs"><div class="wrap tabs" id="topTabs"></div></nav>
+<main class="wrap main" id="planContainer"></main>
+<nav class="bottom-nav"><div class="bottom-tabs"><a class="home-link" href="index.html" aria-label="返回首頁"><span class="icon">⌂</span><span>首頁</span></a><div class="bottom-plan-tabs" id="bottomTabs"></div></div></nav>
+<script>
+const topTabs=document.getElementById('topTabs');
+const bottomTabs=document.getElementById('bottomTabs');
+const planContainer=document.getElementById('planContainer');
+const maps=query=>`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
+const placeholder=(text,index=1)=>`https://placehold.co/640x360/e7eef2/5d6c7d?text=${encodeURIComponent(`${text} ${index}`)}`;
+const imageSources={
+  hero:'https://images.unsplash.com/photo-1527668752968-14dc70a27c95?auto=format&fit=crop&w=1800&q=85',
+  '市區總覽':'https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=85',
+  'Stella Hotel Interlaken':placeholder('Stella Hotel Interlaken'),
+  '市區核心':'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=85',
+  '因特拉肯西站（Interlaken West）':placeholder('Interlaken West'),
+  '何維克街（Höheweg）':placeholder('Höheweg'),
+  '荷黑馬特綠地（Höhematte Park）':'https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=85',
+  '日本友好的庭（Japanischer Garten）':placeholder('Japanischer Garten'),
+  '因特拉肯賭場花園（Kursaal Park / Casino Interlaken）':placeholder('Kursaal Park'),
+  '城堡教堂（Reformierte Schlosskirche）':placeholder('Reformierte Schlosskirche'),
+  '聖靈羅馬天主教堂（Römisch-katholische Kirche Heiliggeist）':placeholder('Heiliggeist Church'),
+  '河畔與下森老城':'https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=1200&q=85',
+  '瓦格納運河與小島區（Spielmatte）':placeholder('Spielmatte'),
+  'Aare Dam Viewpoint':placeholder('Aare Dam Viewpoint'),
+  'Schaalbrücke':placeholder('Schaalbrücke'),
+  'Grosse Staatsschleuse（下森水閘木橋）':placeholder('Grosse Staatsschleuse'),
+  'Fischpass Dreispitz（Dreispitz 魚道）':placeholder('Fischpass Dreispitz'),
+  '下森老城廣場（Stadthausplatz Unterseen）':placeholder('Stadthausplatz Unterseen'),
+  '下森改革教堂（Reformierte Kirche Unterseen）':placeholder('Reformierte Kirche Unterseen'),
+  '少女峰區旅遊博物館（Tourismuseum）':placeholder('Tourismuseum'),
+  '瀑布鎮（第三天早上）':placeholder('瀑布鎮 第三天早上'),
+  'Harder Kulm 復古纜車':placeholder('Harder Kulm funicular'),
+  '哈德昆觀景台（Harder Kulm）':'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=85',
+  '哈德昆全景餐廳（Panorama-Restaurant Harder Kulm）':placeholder('Panorama Restaurant Harder Kulm'),
+  'Panorama Spielplatz Playground':placeholder('Panorama Spielplatz'),
+  '傍晚散步':'https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=1200&q=85',
+  'Reckweg 河畔步道':placeholder('Reckweg'),
+  'Beau Rivage 橋':placeholder('Beau Rivage Bridge'),
+  'Helsana-Trail Interlaken':placeholder('Helsana-Trail Interlaken'),
+  '市中心與下森教堂':placeholder('Churches in Interlaken'),
+  '教堂與日本友好庭園':placeholder('Churches and Japanese Garden'),
+  '博物館與古老木屋':placeholder('Museums and timber houses'),
+  '因特拉肯美術館':placeholder('Interlaken Art Museum'),
+  '巴倫伯格露天博物館':placeholder('Ballenberg Open-Air Museum'),
+  'Höhematte Park': 'https://res.klook.com/image/upload/fl_lossy.progressive,w_1200,h_630,c_fill,q_85/v1784532288/destination/ai_poi_60279332_H_hematte_Park.png'
+};
+const imageURL=(name,index)=>imageSources[name]||placeholder(name,index);
+
+const travelNameCatalog=[
+  'Stella Hotel Interlaken','Interlaken West','Interlaken Ost','Bahnhofstrasse','Harder Kulm','Höhematte Park','Höheweg',
+  'Kursaal Park','Casino Interlaken','Japanischer Garten','Stadthausplatz Unterseen','Spielmatte','Aare Dam Viewpoint',
+  'Schaalbrücke','Grosse Staatsschleuse','Fischpass Dreispitz','Reckweg','Beau Rivage','Beaurivage-Brücke',
+  'Helsana-Trail Interlaken','BÖDELIBAD Interlaken','Reformierte Schlosskirche','Römisch-katholische Kirche Heiliggeist',
+  'Reformierte Kirche Unterseen','Tourismuseum','Interlaken Art Museum','Höhematte','Höheweg'
+];
+const travelNamePattern=new RegExp(`(${travelNameCatalog.map(value=>value.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')).sort((a,b)=>b.length-a.length).join('|')})`,'gi');
+
+function boldTravelTerms(text) {
+  if (!text || typeof text !== 'string') return text;
+  return text
+    .split(/(<[^>]+>)/g)
+    .map(part=>{
+      if (part.startsWith('<')&&part.endsWith('>')) return part;
+      return part.replace(travelNamePattern,'<strong>$1</strong>');
+    })
+    .join('');
+}
+
+document.documentElement.style.setProperty('--hero-image',`url("${imageSources.hero}")`);
+
+const travelData={tabs:[
+  {
+    id:'overview',type:'guide',label:'市區總覽',icon:'🧭',title:'因特拉肯市區｜西站住宿與三天安排',
+    accent:'#0e7490',subtitle:'以 Stella Hotel Interlaken 為基地，把市區景點、河畔散步與第三天下午的 <strong>哈德昆景觀台</strong> Harder Kulm 串成可調整的行程。',metric:'2027/06/13–15',
+    notice:'這次在因特拉肯會住兩天，加上第三天早上與下午；第三天早上前往瀑布鎮，下午安排 <strong>哈德昆景觀台</strong> Harder Kulm，其餘景點分散到前兩天的傍晚或晚上。',
+    facts:[{label:'住宿',value:'Stella Hotel Interlaken'},{label:'住宿位置',value:'西站 400–500 m'},{label:'步行距離',value:'約 5–7 分鐘'}],
+    sections:[
+      {title:'住宿資訊｜Stella Hotel Interlaken',description:'住宿設在因特拉肯西站附近，適合把西站當成每天前後移動與傍晚散步的基地。',items:['🏨 距離因特拉肯西站 400–500 m，走路約 5–7 分鐘。','📅 住宿期間為 2027/06/13–15。','↩️ 若在 2027/6/5 下午 11:59 之前取消，可獲得全額退款；2027/6/6 上午 12:00（含）之後取消，將無法退款。','💳 將在 2027/6/4 以國泰信用卡扣款。']},
+      {title:'三天安排原則',description:'先去必去景點，中途可插入其他景點。',items:['🗓️ 在因特拉肯住兩天，加上第三天早上與下午。','🌊 第三天早上前往瀑布鎮，下午回到因特拉肯安排 哈德昆景觀台。','⭐ 其餘景點穿插在前兩天的零碎時間，優先完成必去景點。','🌙 剩餘景點可放進傍晚／晚上漫步路線，沿途順路補看。']},
+      {title:'市區怎麼分布',description:'因特拉肯的觀光動線集中，適合用步行把車站、主街、草地、公園與河畔串起來。',items:['🚉 熱鬧區以 <strong>Höheweg (何維克街)</strong> 為骨幹，集中在 Interlaken West 與 Interlaken Ost 兩個車站之間，左右兩側有教堂與大草皮公園。','🌊 下森與阿勒河沙洲一帶也有一些商店、旅館與人潮。','🏡 離開上述區域後，多數地方屬於比較寧靜的住宅區。']}
+    ],
+    highlights:[{title:'市區總覽',description:'先以西站附近住宿為中心，再依天氣、體力與營業時間調整每個景點的先後。'}],
+    links:[{label:'Stella Hotel Interlaken 地圖',url:maps('Stella Hotel Interlaken Interlaken')}],
+    checks:['確認 2027/6/4 國泰信用卡扣款','記下 2027/6/5 23:59 的免費取消期限','把必去景點排進前兩天的傍晚或晚上']
+  },
+  {
+    id:'center-route',type:'route',label:'市中心路線',icon:'🌿',title:'市中心必去｜Höheweg (主街)、Höhematte Park (大公園)與公園散步',
+    accent:'#078577',subtitle:'從西站附近住宿出發，沿著市區最熱鬧的主幹線，把兩個必去景點與適合順路補進的公園串起來。',metric:'半日～1 日',
+    notice:'Höhematte Park 與 Höheweg 都是優先景點；教堂、日本友好庭園與 Kursaal Park (賭場花園) 可依開放時間和當天體力插入。',
+    overview:{route:'🏨 西站住宿 → 🚉 Interlaken West → 🛍️ Höheweg → 🪂 Höhematte Park → ⛪ 日本友好庭園 → 🌳 Kursaal Park',chips:['兩個必去點','市區步行','前兩天彈性安排'],timeline:[{name:'西站出發',note:'住宿基地'},{name:'Höheweg主街',note:'必去主街',mode:'🚶'},{name:'Höhematte公園',note:'少女峰視角',mode:'🪂'},{name:'教堂與庭園',note:'安靜停留',mode:'⛪'},{name:'Kursaal Park賭場花園',note:'順路散步',mode:'🌳'}]},
+    stops:[
+      {name:'因特拉肯西站（Interlaken West）',description:'🏨 從 Stella Hotel Interlaken 出發，西站是前兩天市區行程的主要基地。<br>🚉 先沿著市區主幹線安排必去景點，再把其他點留給傍晚或晚間漫步',map:'Interlaken West',tag:'出發點'},
+      {name:'何維克街（Höheweg）',description:'🛍️ 連接因特拉肯東站與西站的繁華大道，林蔭道旁開滿了瑞士名錶店、頂級精品店與巧克力旗艦店。<br>🍫 如 Top of Europe Flagship Store 等店家，非常適合安排在散步或採買時順便逛。<br>⭐ 必去，適合漫步購物，也能把拍街景與前往其他景點串在一起',map:'Höheweg Interlaken',tag:'必去'},
+      {name:'荷黑馬特綠地（Höhematte Park）',description:'🪂 位於鎮中心的巨大草坪，擁有與遠方少女峰同框的明信片視角。<br>🌈 這裡是全歐洲最著名的飛行傘降落場，每天都能看到無數彩虹傘在空中翱翔並在此著陸<br>⭐ 必去，天氣好時優先安排',map:'Höhematte Park Interlaken',tag:'必去'},
+      {name:'日本友好的庭（Japanischer Garten）',description:'🌿 位於市中心教堂旁的精緻日式庭園，是因特拉肯與日本大津市結為姊妹市的象徵。<br>🧘 提供一處安靜的免費小歇綠洲，適合與教堂行程一起安排',map:'Japanischer Garten Interlaken',tag:'安靜小歇'},
+      {name:'因特拉肯賭場花園（Kursaal Park / Casino Interlaken）',description:'🌳 這座大公園隱身在 Höheweg 後方，園內有一棟建於 1859 年、極具歷史感的宏偉宮殿建築，如今是賭場與文化中心。<br>🌸 花園環境幽靜、綠樹成蔭、花團錦簇，還有大型花鐘與古典水池、噴泉，適合拍照與優雅散步。<br>🚶 從西站步行約 12 分鐘，就在主街中段的後方花園，逛 Höheweg 時可順道前往',map:'Kursaal Park Interlaken',tag:'順路安排'}
+    ],
+    highlights:[{title:'Höhematte Park',description:'Höhematte Park（荷黑馬特公園）位於瑞士因特拉肯（Interlaken）市中心，是一片佔地約 14 至 35 公頃的廣闊綠地廣場，被譽為該鎮的「綠肺」。'}],
+    checks:[]
+  },
+  {
+    id:'river-route',type:'route',label:'河畔與老城',icon:'🌊',title:'阿勒河與下森老城｜Spielmatte 河畔路線',
+    accent:'#0f766e',subtitle:'從西站往北走進河中沙洲、木橋與下森老城，把白天景點、夜間河景與中世紀廣場放進一條平坦路線。',metric:'約 1～2 小時',
+    notice:'無',
+    overview:{route:'🚉 Interlaken West → 🚶 Bahnhofstrasse 向北 → 🌊 Spielmatte → 📷 Aare Dam Viewpoint → 🌉 木橋與 Schaalbrücke → 🏘️ Stadthausplatz Unterseen → 🏛️ Tourismuseum',chips:['必拍河景','平坦好走','下森老城'],timeline:[{name:'西站',note:'步行起點'},{name:'Spielmatte',note:'河中沙洲',mode:'🌊'},{name:'Aare Dam',note:'必拍視角',mode:'📷'},{name:'木橋與魚道',note:'看水流',mode:'🌉'},{name:'下森老城',note:'廣場與教堂',mode:'🏘️'},{name:'Tourismuseum',note:'可選室內點',mode:'🏛️'}]},
+    stops:[
+      {name:'因特拉肯西站（Interlaken West）',description:'🚉 從西站出發，沿 Bahnhofstrasse 往北走到阿勒河，約 5–7 分鐘即可進入河畔與下森老城的動線。<br>🧭 這段路避開主要觀光大街，會走進較古老的住宅區與河畔，白天或傍晚都適合安排',map:'Interlaken West',tag:'步行起點'},
+      {name:'瓦格納運河與小島區（Spielmatte）',description:'🌊 阿勒河流經西站附近時，被分流成幾條小運河，中間形成名為 Spielmatte 的河中沙洲小島。<br>🌉 這裡有古老木結構的水閘人行橋 Wehrsteg，站在橋上可看兩側傳統瑞士老木屋與腳下隆隆奔流的清澈河水，非常有威尼斯山城的小巧氛圍。<br>🌙 傍晚後河面較安靜，兩岸瑞士傳統木屋的暖色窗光會倒映在水面上<br>📍 從西站往北走約 5–7 分鐘，是前往下森老城的必經路段',map:'Spielmatte Interlaken',tag:'河畔核心'},
+      {name:'Aare Dam Viewpoint',description:'📷 這是 Spielmatte 一帶必拍的觀景點，適合近距離捕捉水閘、河流與老木屋交疊的畫面。<br>⭐ 必去，可安排在經過水閘橋時一起停留',map:'Aare Dam Viewpoint Interlaken',tag:'必拍'},
+      {name:'Schaalbrücke',description:'🌉 往下森老城區的橋，也是漂亮的拍照點。<br>🏘️ 過橋後可直接接上 Stadthausplatz Unterseen，將河景與老城街區連成一段',map:'Schaalbrücke Unterseen',tag:'拍照點'},
+      {name:'Grosse Staatsschleuse（下森水閘木橋）',description:'🌊 古老的木結構水閘橋是這條路線的特色之一，可以近距離觀察阿勒河水流與水閘工程。<br>🌉 走上木橋可近距離看著河水奔流；從橋上望向兩側傳統木屋，能感受到小巧的山城水鄉氛圍',map:'Grosse Staatsschleuse Interlaken',tag:'木橋水閘'},
+      {name:'Fischpass Dreispitz（Dreispitz 魚道）',description:'🐟 鄰近的小漫步點，結合自然生態與水利歷史。<br>🌿 緊鄰百年歷史的磨坊水閘，綠意、流水與安靜氣氛很適合在老城前後順路走走',map:'Fischpass Dreispitz Interlaken',tag:'鄰近散步'},
+      {name:'下森老城廣場（Stadthausplatz Unterseen）',description:'🏘️ 長方形廣場四周保留極其精美的傳統瑞士木構造房屋（Timber Houses）與彩色外牆，腳下則是古樸的鵝卵石路，走進這裡就像穿梭時空回到中世紀的瑞士。<br>🏛️ 廣場核心是市政廳 Stadthaus (現為 Restaurant Stadthaus)、下森教堂鐘樓、古老市集噴泉 Marktbrunnen 與少女峰區旅遊博物館',map:'Stadthausplatz Unterseen',tag:'老城核心'},
+      {name:'下森改革教堂（Reformierte Kirche Unterseen）',description:'⛪ 位於阿勒河對岸的下森老城區，是一座中世紀新教教堂，也是老城廣場的主要地標。<br>🕰️ 最醒目的是建於 1491 年的中世紀高聳鐘樓，主建築在 19 世紀重建為經典風格<br>🏔️ 教堂前方的市鎮廣場以白雪山頭為背景，很有明信片般的瑞士小鎮風情；傍晚點燈後，鐘樓搭配黑夜中的山脈剪影，很有中世紀小鎮的神秘感<br>🚶 從因特拉肯西站步行過橋約 5–10 分鐘即可抵達',map:'Reformierte Kirche Unterseen',tag:'老城地標'},
+      {name:'少女峰區旅遊博物館（Tourismuseum）',description:'🏛️ 位於下森老城，適合用來了解因特拉肯如何變成觀光勝地的歷史。<br>🎫 原筆記標示<strong> STP 免費</strong>，實際適用方式與開放時間請在出發前確認',map:'Tourismuseum Unterseen',tag:'室內備案'}
+    ],
+    highlights:[{title:'河畔老城風景',description:'白天可把 Aare Dam Viewpoint、老木橋、Spielmatte 與下森老城廣場串起來；傍晚的阿勒河較安靜，河水倒映木屋暖色窗光，點燈後的下森教堂鐘樓與山脈剪影也很有小鎮氣氛。'}],
+    checks:[]
+  },
+  {
+    id:'harder-kulm',type:'route',label:'Harder Kulm',icon:'🏔️',title:'第三天下午｜Harder Kulm 高地景觀',
+    accent:'#2563a8',subtitle:'第三天早上先去瀑布鎮，下午回到因特拉肯，再用復古纜車登上 Harder Kulm 看兩湖、城鎮與雪山。',metric:'下午半日',
+    notice:'第三天早上去瀑布鎮，下午安排 Harder Kulm；要注意纜車上下時間，要趕上往蘇黎世火車。',
+    overview:{route:'🌊 瀑布鎮（早上） → 🚉 回到因特拉肯 → 🚞 Harder Kulm 復古纜車 → 🔭 觀景台 → ☕ 全景餐廳／遊樂場',chips:['第三天下午','百年纜車','兩湖全景','天氣優先'],timeline:[{name:'瀑布鎮',note:'第三天早上'},{name:'返回因特拉肯',note:'銜接下午',mode:'🚉'},{name:'復古纜車',note:'約 10 分鐘',mode:'🚞'},{name:'Harder Kulm',note:'兩湖與雪山',mode:'🏔️'},{name:'餐廳與遊樂場',note:'彈性停留',mode:'☕'}]},
+    stops:[
+      {name:'瀑布鎮（第三天早上）',description:'🌊 第三天早上會先去瀑布鎮；<br>🚉 下午回到因特拉肯後，再接續 Harder Kulm 行程',map:'瀑布鎮（待補名稱）',tag:'早上行程'},
+      {name:'Harder Kulm 復古纜車',description:'🚞 搭乘百年復古纜車只需約 10 分鐘即可登頂。<br>⏱️ 建議先確認第三天從瀑布鎮回到因特拉肯的時間，再安排纜車候車與登頂停留',map:'Harder Kulm funicular Interlaken',tag:'約 10 分鐘'},
+      {name:'哈德昆觀景台（Harder Kulm）',description:'🔭 登頂後可站上突出的懸空玻璃平台，以絕佳視角一次俯瞰兩大湖泊與因特拉肯全景。<br>🏔️ 天氣好時更能直面艾格峰、僧侶峰與少女峰<br>⭐ 必去，第三天下午的核心景點',map:'Harder Kulm Interlaken',tag:'必去',source:{label:'參考介紹',url:'https://twoslowbyron.com/harder-kulm/'}},
+      {name:'哈德昆全景餐廳（Panorama-Restaurant Harder Kulm）',description:'🏰 外觀像童話城堡一樣，城堡風餐廳本身免消費也能拍照。<br>☕ 適合一邊喝咖啡，一邊俯瞰因特拉肯兩湖與雪山，是登頂後的黃金駐足點',map:'Panorama-Restaurant Harder Kulm',tag:'拍照／咖啡'},
+      {name:'Panorama Spielplatz Playground',description:'🛝 往觀景餐廳後方的遊樂場走，那裡有另一個往城堡拍攝的好角度。<br>📷 如果還有時間，可把遊樂場和餐廳外觀一起補進登頂照片',map:'Panorama Spielplatz Harder Kulm',tag:'取景點'}
+    ],
+    highlights:[{title:'Harder Kulm 全景',description:'把懸空玻璃平台、兩湖、因特拉肯與晴天時的艾格峰、僧侶峰、少女峰收進第三天下午。'}],
+    checks:['要注意纜車上下時間，要趕上往蘇黎世火車。','確認第三天回到因特拉肯的大約時間','依天氣確認 Harder Kulm 是否適合登頂']
+  },
+  {
+    id:'evening-walk',type:'route',label:'Reckweg河畔步道',icon:'🚶‍♂️‍➡️',title:'Reckweg 河畔步道｜傍晚散步',
+    accent:'#0f766e',subtitle:'住在 Interlaken West 附近，可沿阿勒河南岸向東走進 Reckweg，拍攝藍綠色河水、運動中心與 Beau Rivage 橋的景色。',metric:'約 1.5 km',
+    notice:'去程約 15–20 分鐘（約 1.5 公里）；抵達 Beaurivage-Brücke 後，可步行經 Höheweg、Höhematte 回西站，或到 Interlaken Ost 搭一站回 Interlaken West。',
+    facts:[{label:'去程',value:'15–20 分鐘'},{label:'步行距離',value:'約 1.5 km'},{label:'回程',value:'步行或搭車'}],
+    overview:{route:'🏨 酒店 → 🚉 Interlaken West → 🚶 Reckweg → 🏊 BÖDELIBAD／Helsana-Trail → 🌉 Beaurivage-Brücke → ↩️ 步行／搭車回程',chips:['傍晚散步','約 1.5 km','河畔拍照','兩種回程'],timeline:[{name:'酒店／西站',note:'住宿出發'},{name:'Reckweg',note:'去程 15–20 分鐘',mode:'🚶'},{name:'BÖDELIBAD／Helsana-Trail',note:'河畔拍攝',mode:'🏊'},{name:'Beaurivage-Brücke',note:'橋上遠眺',mode:'🌉'},{name:'回程 A：Höheweg／Höhematte',note:'步行回西站',mode:'🚶'},{name:'回程 B：Interlaken Ost',note:'搭一站回西站',mode:'🚆'}]},
+    stops:[
+      {name:'因特拉肯西站（Interlaken West）',description:'✨從酒店經西站附近切入 Reckweg 河畔步道。',map:'Interlaken West',tag:'出發點'},
+      {name:'Reckweg 河畔步道',description:'🚶 去程沿阿勒河南岸向東步行約 15–20 分鐘（約 1.5 公里）。<br> ✨ 蒂芬妮藍的絕美河水、古典奢華的酒店風情、遠眺少女峰雪山景致、遠離熱鬧喧囂的何維克大街',map:'Reckweg Interlaken',tag:'河畔核心'},
+      {name:'BÖDELIBAD Interlaken／Helsana-Trail 運動中心',description:'🏊 走到 BÖDELIBAD Interlaken 附近的 Helsana-Trail 區域，從北岸往南看，能拍出沒有遮擋的藍綠色河水與對岸樹影。',map:'BÖDELIBAD Interlaken',tag:'拍照點'},
+      {name:'Beaurivage-Brücke（Beau Rivage 橋）',description:'🌉 站在 Beaurivage-Brücke 橋上向西／西南方遠眺，可拍攝古老飯店 Grand Hotel、蒂芬妮藍河水與遠方雪山的明信片視角。',map:'Beaurivage-Brücke Interlaken',tag:'必拍'},
+      {name:'回程方案 A｜Höheweg 與 Höhematte',description:'🚶 回程方案 A：過橋後切回 Höheweg 大道，途經 Höhematte 大草坪，邊逛街邊走回西站酒店，約 15–20 分鐘。',map:'Höhematte Park Interlaken',tag:'步行回程'},
+      {name:'回程方案 B｜Interlaken Ost',description:'🚆 回程方案 B：拍完照後從 Beaurivage-Brücke 步行 3–5 分鐘到 Interlaken Ost，搭一站約 3 分鐘回到 Interlaken West。',map:'Interlaken Ost',tag:'搭車回程'}
+    ],
+    highlights:[{title:'Reckweg 河畔步道',description:'Reckweg 集合蒂芬妮藍河水、古典酒店、Helsana-Trail 與遠方雪山，適合安排傍晚拍照與慢走。'}],
+    checklistDescription:'請在這裡記下確認過的旅遊資訊與待辦事項。',
+    checks:[]
+  },
+  {
+    id:'churches-sights',type:'guide',label:'教堂',icon:'⛪',title:'教堂介紹｜市中心與下森老城的三座教堂',
+    accent:'#9a5a00',subtitle:'集中整理市中心兩座教堂與下森老城教堂的歷史、建築特色與步行位置。',metric:'3 座教堂',
+    notice:'城堡教堂與聖靈羅馬天主教堂可在市中心同段參觀；下森改革教堂則可另安排在下森老城一帶。',
+    facts:[{label:'市中心教堂',value:'2 座'},{label:'下森老城教堂',value:'1 座'},{label:'適合方式',value:'步行串聯'}],
+    sections:[
+      {title:'城堡教堂（Reformierte Schlosskirche）',description:'因特拉肯現存最古老的建築之一，位於市中心 Schlossstrasse。',items:['🏛️ 歷史可追溯至 1133 年的奧古斯丁修道院，宗教改革時期曾被當作倉庫與穀倉。','🕰️ 擁有令人印象深刻的 14 世紀哥德式鐘樓。','🪟 內部設計樸素典雅，並裝飾美麗的彩繪玻璃窗。','📍 位於市中心 Schlossstrasse，適合和另一座市中心教堂安排同段參觀。']},
+      {title:'聖靈羅馬天主教堂（Römisch-katholische Kirche Heiliggeist）',description:'與城堡教堂比鄰而居的新哥德式石造建築，適合在同一個市中心教堂段落參觀。',items:['🏛️ 建於 1906–1908 年，是 20 世紀初的新哥德式石造建築。','🪨 灰色石牆、尖拱門與裝飾華麗的鐘樓很有辨識度。','⚖️ 與旁邊白牆金鐘的城堡教堂形成強烈視覺對比。','📍 同樣位於市中心 Schlossstrasse，與城堡教堂僅幾步之遙。']},
+      {title:'下森改革教堂（Reformierte Kirche Unterseen）',description:'位於阿勒河對岸下森老城區的中世紀新教教堂，是老城廣場的主要地標。',items:['🕰️ 最醒目的是建於 1491 年的中世紀高聳鐘樓，主建築在 19 世紀重建為經典風格。','🏘️ 教堂前方是美麗的市鎮廣場，周邊保留下森老城的木屋與鵝卵石街景。','🏔️ 白雪皚皚的阿爾卑斯山頭作為背景，很有明信片般的瑞士小鎮風情。','🚶 從因特拉肯西站步行過橋約 5–10 分鐘即可抵達下森老城區。']}
+    ],
+    highlights:[{title:'市中心與下森教堂',description:'兩座市中心教堂可安排在同一段參觀；下森改革教堂則位於下森老城一帶，適合另排時段。'}],
+    links:[{label:'城堡教堂官方介紹',url:'https://www.interlaken.swiss/en/experiences/poi/monastery-and-interlaken-castle'}],
+    checks:['確認城堡教堂的開放時間與參觀規則','確認聖靈羅馬天主教堂的開放時間與參觀規則','把下森改革教堂排進下森老城路線']
+  },
+  {
+    id:'museums',type:'guide',label:'博物館',icon:'🏛️',title:'博物館｜因特拉肯市區與近郊文化景點',
+    accent:'#b45309',subtitle:'整理市區兩座可步行安排的博物館，以及需前往布里恩茲的巴倫伯格露天博物館。',metric:'文化景點',
+    notice:'市區兩座博物館適合步行安排，也能作為天氣不佳時的備案；巴倫伯格露天博物館需要搭車前往布里恩茲。STP 免費標示與開放時間請出發前再次確認。',
+    facts:[{label:'天氣不佳可去參觀',value:'雨備'}],
+    sections:[
+      {title:'市區最代表性（步行可達）',description:'兩個市區文化點都可從因特拉肯步行安排，適合雨天或想放慢節奏時使用。',items:['🏛️ <strong>少女峰區旅遊博物館</strong>（Tourismuseum）：探索因特拉肯如何變成觀光勝地的歷史，位於下森老城。','🎨 <strong>因特拉肯美術館</strong>：欣賞現代與當代藝術，離西站最近。','🎫 原筆記標示兩處博物館皆可使用 <strong>STP 免費</strong>，票券適用條件與開放時間請出發前確認。']},
+      {title:'近郊最代表性（世界級必去）',description:'若安排完整的近郊日，可把巴倫伯格露天博物館列為瑞士傳統文化的主行程。',items:['🏡 <strong>巴倫伯格露天博物館</strong>是全瑞士唯一把百棟古老木屋搬過來的巨大時光村落。','🚆 需搭車到布里恩茲，建議預留完整的近郊往返時間。','🎫 原筆記標示 <strong>STP 免費</strong>，實際適用規則與入場資訊請出發前確認。']},
+    ],
+    highlights:[{title:'少女峰區旅遊博物館（Tourismuseum）',description:'位於下森老城，適合把因特拉肯的觀光歷史與老城散步安排在一起。'},{title:'因特拉肯美術館',description:'離西站最近的市區文化點，適合放進市中心路線或雨天備案。'},{title:'巴倫伯格露天博物館',description:'需搭車到布里恩茲的巨大時光村落，集中欣賞瑞士傳統木屋與地方文化。'}],
+    checks:['確認少女峰區旅遊博物館的開放時間與 STP 適用規則','確認因特拉肯美術館的開放時間與 STP 適用規則','評估是否安排布里恩茲與巴倫伯格露天博物館','查詢近郊交通與官方入場資訊']
+  }
+]};
+
+function header(plan) {
+  return `
+    <section class="intro">
+      <div>
+        <div class="kicker">${plan.type==='guide'?'Guide Content':'Daily Route'}</div>
+        <h2>${boldTravelTerms(plan.title)}</h2>
+        <p>${boldTravelTerms(plan.subtitle)}</p>
+      </div>
+      <div class="metric">
+        <strong>${plan.metric}</strong>
+        <span>${plan.type==='guide'?'重點':'建議安排'}</span>
+      </div>
+    </section>
+  `;
+}
+
+function sourceHTML(source) {
+  return source
+    ? `<a class="source-link" target="_blank" rel="noopener" href="${source.url}">${source.label} ↗</a>`
+    : '';
+}
+
+function cleanItemText(text) {
+  return text.trim().replace(/^[^\p{L}\p{N}\s]+/u,'').trim();
+}
+
+function itemHTML(text) {
+  const trimmedText=text.trim();
+  const symbolMatch=trimmedText.match(/^[^\p{L}\p{N}\s]+/u);
+  const symbol=symbolMatch?symbolMatch[0]:'✦';
+  const cleanText=boldTravelTerms(cleanItemText(trimmedText));
+  return `<li><span class="item-symbol" aria-hidden="true">${symbol}</span>${cleanText}</li>`;
+}
+
+function stopHTML(stop,index) {
+  const image=stop.image||imageURL(stop.name,index+1);
+  const fit=stop.imageFit==='contain'?' contain':'';
+  const bulletText=stop.description.includes('<br>')
+    ? stop.description.split('<br>').map(part=>part.trim()).filter(Boolean).map(itemHTML).join('')
+    : '';
+  const descriptionMarkup=bulletText
+    ? `<ul class="stop-description-list">${bulletText}</ul>`
+    : `<p>${boldTravelTerms(stop.description)}</p>`;
+
+  return `
+    ${index?'<div class="arrow"></div>':''}
+    <article class="stop">
+      <div class="num">${String(index+1).padStart(2,'0')}</div>
+      <img class="stop-image${fit}" src="${image}" alt="${stop.name} 圖片" loading="lazy">
+      <div>
+        <h3>${boldTravelTerms(stop.name)}${stop.tag?`<span class="tag">${stop.tag}</span>`:''}</h3>
+        ${descriptionMarkup}
+      </div>
+      <div class="stop-links">
+        <a class="map" target="_blank" rel="noopener" href="${maps(stop.map)}">地圖 ↗</a>
+        ${sourceHTML(stop.source)}
+      </div>
+    </article>
+  `;
+}
+
+function highlightHTML(highlight) {
+  const image=highlight.image||imageSources[highlight.title]||'';
+  const media=image
+    ? `<img loading="lazy" src="${image}" alt="${highlight.title}">`
+    : `<span class="text-photo-icon">${highlight.icon||'✦'}</span>`;
+  const photoClass=image?'':' text-photo';
+
+  return `
+    <section class="section-card">
+      <div class="photo${photoClass}">
+        ${media}
+      </div>
+      <h3>${boldTravelTerms(highlight.title)}</h3>
+      <p>${boldTravelTerms(highlight.description)}</p>
+    </section>
+  `;
+}
+
+function overviewHTML(plan) {
+  const overview=plan.overview;
+  if (!overview) return '';
+  const timeline=overview.timeline.map((stop,index)=>`
+    ${index?`
+      <div class="connector">
+        <b>${stop.mode||'→'}</b>
+        <small>${stop.note||'移動'}</small>
+      </div>
+    `:''}
+    <div class="timeline-stop">
+      <span>${boldTravelTerms(stop.name)}</span>
+      ${stop.note&&!index?`<small>${stop.note}</small>`:''}
+    </div>
+  `).join('');
+
+  return `
+    <section class="route-overview" aria-label="路線總覽">
+      <div class="section-heading overview-heading">
+        <h2>路線總覽</h2>
+        <p>依停靠順序掌握整體方向與移動方式，再查看下方的停靠點細節。</p>
+      </div>
+      <div class="chips">
+        ${overview.chips.map(chip=>`<span class="chip">${boldTravelTerms(chip)}</span>`).join('')}
+      </div>
+      <div class="timeline" aria-label="推薦玩法時間軸">${timeline}</div>
+    </section>
+  `;
+}
+
+function factsHTML(plan) {
+  if (!plan.facts?.length) return '';
+  return `
+    <section class="route-overview" aria-label="內容摘要">
+      <div class="section-heading overview-heading">
+        <h2>內容摘要</h2>
+      </div>
+      <div class="facts">
+        ${plan.facts.map(fact=>`<div class="fact"><strong>${fact.value}</strong><span>${boldTravelTerms(fact.label)}</span></div>`).join('')}
+      </div>
+    </section>
+  `;
+}
+
+function guideSectionsHTML(plan) {
+  return `
+    <div class="section-heading"><h2>重點內容</h2></div>
+    <div class="grid">
+      ${plan.sections.map(section=>`
+        <section class="section-card guide-section">
+          <h3>${boldTravelTerms(section.title)}</h3>
+          <p>${boldTravelTerms(section.description)}</p>
+          <ul>${section.items.map(itemHTML).join('')}</ul>
+        </section>
+      `).join('')}
+    </div>
+  `;
+}
+
+function tablesHTML(plan) {
+  if (!plan.tables?.length) return '';
+  return plan.tables.map(table=>`
+    <div class="section-heading">
+      <h2>${boldTravelTerms(table.title)}</h2>
+      <p>${boldTravelTerms(table.description)}</p>
+    </div>
+    <section class="section-card table-card">
+      <div class="table-wrap">
+        <table class="info-table">
+          <thead><tr>${table.headers.map(header=>`<th>${boldTravelTerms(header)}</th>`).join('')}</tr></thead>
+          <tbody>${table.rows.map(row=>`<tr>${row.map(cell=>`<td>${boldTravelTerms(cell)}</td>`).join('')}</tr>`).join('')}</tbody>
+        </table>
+      </div>
+    </section>
+  `).join('');
+}
+
+function linksHTML(plan) {
+  if (!plan.links?.length) return '';
+  return `
+    <div class="section-heading">
+      <h2>參考連結</h2>
+      <p>官方網站、參考文章與需要再次查閱的資料。</p>
+    </div>
+    <section class="section-card">
+      <div class="link-list">
+        ${plan.links.map(link=>`
+          <a class="reference-link" target="_blank" rel="noopener" href="${link.url}">
+            <span>${boldTravelTerms(link.label)}</span>
+            <span>開啟連結 ↗</span>
+          </a>
+        `).join('')}
+      </div>
+    </section>
+  `;
+}
+
+function checklistHTML(plan,title,description) {
+  return `
+    <div class="section-heading">
+      <h2>${title}</h2>
+      <p>${boldTravelTerms(description)}</p>
+    </div>
+    <section class="section-card">
+      <div class="checklist">
+        ${plan.checks.map((check,index)=>`
+          <label class="check">
+            <input type="checkbox" data-key="${plan.id}-${index}">
+            <span>${boldTravelTerms(check)}</span>
+          </label>
+        `).join('')}
+      </div>
+    </section>
+  `;
+}
+
+function renderRoutePlan(plan) {
+  return `
+    <section class="plan" id="${plan.id}" style="--accent:${plan.accent||'var(--blue)'}">
+      ${header(plan)}
+      <div class="notice"><strong>行程提醒：</strong>${boldTravelTerms(plan.notice)}</div>
+      ${factsHTML(plan)}
+      ${overviewHTML(plan)}
+      <div class="section-heading"><h2>行程路線</h2><p>依順序列出本次行程的主要停靠點。</p></div>
+      <div class="route">${plan.stops.map(stopHTML).join('')}</div>
+      <div class="section-heading"><h2>特色照片與重點</h2><p>補充這套路線最具代表性的景觀或體驗。</p></div>
+      <div class="grid">${plan.highlights.map(highlightHTML).join('')}</div>
+      ${linksHTML(plan)}
+      ${checklistHTML(plan,'Checklist',plan.checklistDescription||'Checklist 狀態會保存在目前瀏覽器。')}
+    </section>
+  `;
+}
+
+function renderGuidePlan(plan) {
+  return `
+    <section class="plan" id="${plan.id}" style="--accent:${plan.accent||'var(--blue)'}">
+      ${header(plan)}
+      ${plan.notice?`<div class="notice"><strong>行程提醒：</strong>${boldTravelTerms(plan.notice)}</div>`:''}
+      ${factsHTML(plan)}
+      ${guideSectionsHTML(plan)}
+      ${tablesHTML(plan)}
+      <div class="section-heading"><h2>特色照片與重點</h2><p>最具代表性的景觀、文化內容或交通筆記。</p></div>
+      <div class="grid">${plan.highlights.map(highlightHTML).join('')}</div>
+      ${linksHTML(plan)}
+      ${checklistHTML(plan,'Checklist','請在這裡記下確認過的旅遊資訊與待辦事項。')}
+    </section>
+  `;
+}
+
+function renderPlan(plan) {
+  return plan.type==='guide'?renderGuidePlan(plan):renderRoutePlan(plan);
+}
+
+function renderPlans() {
+  planContainer.innerHTML=travelData.tabs.map(renderPlan).join('');
+  restoreChecks();
+}
+
+function renderTabs() {
+  const tabs=travelData.tabs.map(plan=>`
+    <button class="tab" data-target="${plan.id}">
+      <span class="icon">${plan.icon}</span>
+      <span>${plan.label}</span>
+    </button>
+  `).join('');
+  topTabs.innerHTML=tabs;
+  bottomTabs.innerHTML=tabs;
+}
+
+function showPlan(id,updateHash=true,shouldScroll=true) {
+  document.querySelectorAll('.plan').forEach(plan=>plan.classList.toggle('active',plan.id===id));
+  document.querySelectorAll('[data-target]').forEach(tab=>tab.classList.toggle('active',tab.dataset.target===id));
+  if (updateHash) history.replaceState(null,'',`#${id}`);
+  if (shouldScroll) {
+    const main=document.getElementById('planContainer');
+    const sticky=document.querySelector('.sticky-tabs');
+    const targetY=main?main.offsetTop-(sticky?sticky.offsetHeight:0)-12:0;
+    window.scrollTo({top:Math.max(targetY,0),left:0,behavior:'smooth'});
+  }
+}
+
+function restoreChecks() {
+  document.querySelectorAll('[data-key]').forEach(checkbox=>{
+    const key=`interlaken-town-${checkbox.dataset.key}`;
+    checkbox.checked=localStorage.getItem(key)==='1';
+    checkbox.onchange=()=>localStorage.setItem(key,checkbox.checked?'1':'0');
+  });
+}
+
+renderTabs();
+renderPlans();
+
+document.addEventListener('click',event=>{
+  const tab=event.target.closest('[data-target]');
+  if (tab) showPlan(tab.dataset.target);
+});
+
+const planIds=travelData.tabs.map(plan=>plan.id);
+const initialPlan=planIds.includes(location.hash.slice(1))?location.hash.slice(1):planIds[0];
+showPlan(initialPlan,false,false);
+
+window.addEventListener('hashchange',()=>{
+  const id=location.hash.slice(1);
+  if (planIds.includes(id)) showPlan(id,false,false);
+});
+</script>
+</body>
+</html>
