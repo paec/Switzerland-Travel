@@ -33,15 +33,16 @@ const topTabs=document.getElementById('topTabs');
 const bottomTabs=document.getElementById('bottomTabs');
 const planContainer=document.getElementById('planContainer');
 const maps=query=>`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
-const placeholder=(text,index)=>`https://placehold.co/640x360/e7eef2/5d6c7d?text=${encodeURIComponent(text+' '+index)}`;
-const imageSources={
-  hero:'https://images.unsplash.com/photo-1527668752968-14dc70a27c95?auto=format&fit=crop&w=1800&q=85',
-  '行程一代表景色':'https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=85',
-  '行程二核心體驗':'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=85',
-  '景點主視覺':'https://images.unsplash.com/photo-1527668752968-14dc70a27c95?auto=format&fit=crop&w=1200&q=80',
-  '主題內容照片':'https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=1200&q=85'
+const placeholder=(text,index=1)=>{
+  const label=`${text || '未命名圖片'} ${index}`;
+  const svg=`<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360" viewBox="0 0 640 360"><rect width="640" height="360" fill="#e7eef2"/><path d="M0 280 150 150l94 86 86-104 160 148 150-102v182H0Z" fill="#c4d8df"/><circle cx="500" cy="90" r="38" fill="#f2c879"/><text x="320" y="318" fill="#5d6c7d" font-family="sans-serif" font-size="22" text-anchor="middle">${label}</text></svg>`;
+  return `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(svg)}`;
 };
-const imageURL=(name,index)=>imageSources[name]||placeholder(name,index);
+
+const imageExtensions=['jpg','jpeg','png','webp','gif','avif','jfif','svg'];
+const imagePath=(key,extensionIndex=0)=>`./image/${encodeURIComponent(key)}.${imageExtensions[extensionIndex]}`;
+const imageTag=(key,index,className,alt)=>`<img class="${className||''}" src="${imagePath(key)}" data-image-key="${encodeURIComponent(key)}" data-image-index="${index}" data-image-extension-index="0" alt="${alt||`${key} 圖片`}" loading="lazy">`;
+const heroImageKey='行程一代表景色';
 
 const travelNameCatalog=[
   '大三巴牌坊','澳門塔','威尼斯人','威尼斯人度假村','葡京酒店','金沙城中心','議事亭前地',
@@ -59,7 +60,24 @@ function boldTravelTerms(text) {
     .join('');
 }
 
-document.documentElement.style.setProperty('--hero-image',`url("${imageSources.hero}")`);
+function setHeroImage(key,index=1) {
+  const probe=new Image();
+  const setBackground=image=>document.documentElement.style.setProperty('--hero-image',`url("${image}")`);
+  let extensionIndex=0;
+  const tryNextImage=()=>{
+    if (extensionIndex>=imageExtensions.length) {
+      setBackground(placeholder(key,index));
+      return;
+    }
+    probe.src=imagePath(key,extensionIndex);
+    extensionIndex+=1;
+  };
+  probe.onload=()=>setBackground(probe.src);
+  probe.onerror=tryNextImage;
+  tryNextImage();
+}
+
+setHeroImage(heroImageKey);
 
 const travelData={tabs:[
   {
@@ -163,7 +181,6 @@ function itemHTML(text) {
 }
 
 function stopHTML(stop, index) {
-  const image = stop.image || imageURL(stop.name, index + 1);
   const fit = stop.imageFit === 'contain' ? ' contain' : '';
 
   const bulletText = stop.description.includes('<br>')
@@ -183,7 +200,7 @@ function stopHTML(stop, index) {
     ${index ? '<div class="arrow"></div>' : ''}
     <article class="stop">
       <div class="num">${String(index + 1).padStart(2, '0')}</div>
-      <img class="stop-image${fit}" src="${image}" alt="${stop.name} 圖片" loading="lazy">
+      ${imageTag(stop.name,index + 1,`stop-image${fit}`,`${stop.name} 圖片`)}
       <div>
         <h3>${boldTravelTerms(stop.name)}${stop.tag ? `<span class="tag">${stop.tag}</span>` : ''}</h3>
         ${descriptionMarkup}
@@ -196,17 +213,11 @@ function stopHTML(stop, index) {
   `;
 }
 
-function highlightHTML(highlight) {
-  const image = highlight.image || imageSources[highlight.title] || '';
-  const media = image
-    ? `<img loading="lazy" src="${image}" alt="${highlight.title}">`
-    : `<span class="text-photo-icon">${highlight.icon || '✦'}</span>`;
-  const photoClass = image ? '' : ' text-photo';
-
+function highlightHTML(highlight,index) {
   return `
     <section class="section-card">
-      <div class="photo${photoClass}">
-        ${media}
+      <div class="photo">
+        ${imageTag(highlight.title,index + 1,'',`${highlight.title} 圖片`)}
         <span>${boldTravelTerms(highlight.title)}</span>
       </div>
       <h3>${boldTravelTerms(highlight.title)}</h3>
@@ -419,6 +430,20 @@ function restoreChecks() {
 
 renderTabs();
 renderPlans();
+
+document.addEventListener('error',event=>{
+  const image=event.target;
+  if (image?.tagName !== 'IMG' || !image.dataset.imageKey || image.dataset.imageFallback) return;
+  const key=decodeURIComponent(image.dataset.imageKey);
+  const nextExtensionIndex=Number(image.dataset.imageExtensionIndex||0)+1;
+  if (nextExtensionIndex<imageExtensions.length) {
+    image.dataset.imageExtensionIndex=String(nextExtensionIndex);
+    image.src=imagePath(key,nextExtensionIndex);
+    return;
+  }
+  image.dataset.imageFallback='1';
+  image.src=placeholder(key,image.dataset.imageIndex);
+},true);
 
 document.addEventListener('click', event => {
   const tab = event.target.closest('[data-target]');

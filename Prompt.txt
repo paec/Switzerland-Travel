@@ -8,8 +8,8 @@
 * 可依內容分出tab，例如：
   * 完整路線／行程，切出tab
   * 大景點說明介紹 或 雜項無法分類時，切出tab
+* 圖片來源是image/
 
-限制：
-* 圖片請盡量使用 **Web URL** 作為 `image source`，不要使用 Local 圖片。
-* 可使用具代表性的 Placeholder 即可，後續讓user自行替換圖片。
-* 每個放圖片的地方，都幫我用他的title為key，放在image list裡面。
+
+補充：
+* 做出來的HTML，為AI生成整個大架構和內容，但方便User去修改內容和放圖片。
